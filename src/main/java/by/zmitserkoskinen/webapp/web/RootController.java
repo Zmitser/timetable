@@ -32,4 +32,9 @@ public class RootController {
     public String getTeacherInformation(@PathVariable int id){
         return "teacherCard";
     }
+
+    @RequestMapping(value = "timetable", method = RequestMethod.GET)
+    public String getTimetable(){
+        return "timetable";
+    }
 }

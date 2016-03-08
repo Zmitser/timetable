@@ -40,6 +40,17 @@ function updateRow(id) {
     });
 }
 
+
+$('#dropzone').dmUploader({
+    url: ajaxUrl + "fileUpload",
+    dataType: 'json',
+    allowedTypes: 'image/*',
+    onUploadSuccess: function (id, response) {
+        form.find("input[name='photo']").val(response)
+    }
+});
+
+
 function save() {
     $.ajax({
         type: "POST",

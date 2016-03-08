@@ -19,7 +19,7 @@
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-image">
-                    <img src="<c:url value="/resources/img/img1.jpg"/>">
+                    <img class="person-image" src="<c:url value="/resources/img/img1.jpg"/>">
                     <span class="card-title"></span>
                 </div>
                 <div class="card-content">
@@ -38,6 +38,7 @@
 <c:import url="templates/footer.jsp"/>
 </body>
 <script>
+
     var ajaxUrl = 'http://localhost:8080/ajax/teachers/';
     var array = window.location.href.split('/');
     $.ajax({
@@ -49,6 +50,7 @@
             $('.skype').text(data.skype);
             $('.phone').text( data.phone);
             $('.descr').text(data.descr);
+            $('.person-image').attr("src","<c:url value="/resources/img/"/>" +  data.photo);
         }
     });
 </script>

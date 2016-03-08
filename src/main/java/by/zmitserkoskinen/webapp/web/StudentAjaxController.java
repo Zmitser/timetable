@@ -58,7 +58,6 @@ public class StudentAjaxController {
 
     }
 
-
     @RequestMapping("/fileUpload")
     public  ResponseEntity<String> fileUploaded(
             @RequestParam("file") MultipartFile uploadedFile, SessionStatus status) {
@@ -66,7 +65,7 @@ public class StudentAjaxController {
         InputStream inputStream;
         OutputStream outputStream;
         String fileName = uploadedFile.getOriginalFilename();
-        String fullFileName = "E:/projectForMe/timetable/src/main/webapp/resources/img/" + fileName;
+        String fullFileName = "E:/projectForMe/timetable/src/main/webapp/resources/img/students/" + fileName;
         try {
             inputStream = uploadedFile.getInputStream();
             File newFile = new File(fullFileName);
@@ -84,8 +83,7 @@ public class StudentAjaxController {
             inputStream.close();
             outputStream.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            return new ResponseEntity<>(fileName, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(fileName, HttpStatus.OK);
     }

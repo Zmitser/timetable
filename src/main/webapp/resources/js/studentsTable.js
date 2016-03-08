@@ -54,6 +54,7 @@ $('#dropzone').dmUploader({
         form.find("input[name='photo']").val(response)
     }
 });
+
 function save() {
     $.ajax({
         type: "POST",

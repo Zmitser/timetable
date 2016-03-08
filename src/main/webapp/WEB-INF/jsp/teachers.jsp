@@ -48,10 +48,13 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input value="Фото преподавателя" id="photo" name="photo" type="text" class="validate">
-                        <label for="photo">Фото</label>
+                <div class="file-field input-field" id="dropzone">
+                    <div class="btn">
+                        <span>Фото</span>
+                        <input type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" name="photo" type="text">
                     </div>
                 </div>
 
@@ -87,7 +90,9 @@
         </div>
     </form:form>
 </div>
+
 <c:import url="templates/footer.jsp"/>
+<script src="<c:url value="/resources/js/dmuploader.min.js"/>"></script>
 <script src="<c:url value="/resources/js/teachersTable.js"/>"></script>
 </body>
 </html>
