@@ -29,7 +29,7 @@
                     <li><a class="white-text" href="<c:url value="/"/> ">Главная</a></li>
                     <li><a class="white-text" href="<c:url value="/teachers"/>">Преподаватели</a></li>
                     <li><a class="white-text" href="<c:url value="/students"/>">Студенты</a></li>
-                    <li><a class="white-text" href="#!">Расписание</a></li>
+                    <li><a class="white-text" href="<c:url value="/timetable"/>">Расписание</a></li>
                     <li><a class="white-text" href="#!">Успеваемость</a></li>
                 </ul>
             </div>
