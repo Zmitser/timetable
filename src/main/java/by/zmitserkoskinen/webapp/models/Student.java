@@ -9,8 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "student", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "email_UNIQUE"),
-@UniqueConstraint(columnNames = "skype", name = "skype_UNIQUE"), @UniqueConstraint(columnNames = "phone", name = "skype_UNIQUE")})
+@Table(name = "student")
 public class Student extends BaseEntity implements Serializable {
     @Column(name = "name", nullable = false)
     @NotEmpty
@@ -37,7 +36,7 @@ public class Student extends BaseEntity implements Serializable {
     @Column(name = "phone", nullable = false)
     protected String phone;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     protected StudentGroup studentGroup;
 

@@ -1,41 +1,40 @@
 package by.zmitserkoskinen.webapp.service;
 
-import by.zmitserkoskinen.webapp.models.Student;
+import by.zmitserkoskinen.webapp.models.StudentGroup;
 import by.zmitserkoskinen.webapp.repository.StudentGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by Dimka on 07.03.2016.
- */
-public class StudentGroupServiceImpl implements StudentService {
+@Service
+public class StudentGroupServiceImpl implements StundentGroupService {
 
     @Autowired
-    StudentGroupRepository repository;
+    private StudentGroupRepository repository;
 
     @Override
-    public Student save(Student student) {
-        return null;
+    public StudentGroup save(StudentGroup studentGroup) {
+        return repository.save(studentGroup);
     }
 
     @Override
     public void delete(int id) {
-
+            repository.delete(id);
     }
 
     @Override
-    public Student get(int id) {
-        return null;
+    public StudentGroup get(int id) {
+        return repository.getOne(id);
     }
 
     @Override
-    public void update(Student student) {
-
+    public void update(StudentGroup student) {
+        repository.save(student);
     }
 
     @Override
-    public List<Student> getAll() {
-        return null;
+    public List<StudentGroup> getAll() {
+        return repository.findAll();
     }
 }

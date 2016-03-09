@@ -3,7 +3,6 @@ package by.zmitserkoskinen.webapp.web;
 import by.zmitserkoskinen.webapp.models.Student;
 import by.zmitserkoskinen.webapp.models.StudentGroup;
 import by.zmitserkoskinen.webapp.service.StudentService;
-import by.zmitserkoskinen.webapp.service.StundentGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +23,6 @@ public class StudentAjaxController {
     @Autowired
     protected StudentService service;
 
-    protected StundentGroupService groupService;
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Student> getAll() {

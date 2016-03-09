@@ -5,16 +5,12 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name = "teacher", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "email_UNIQUE"),
-        @UniqueConstraint(columnNames = "skype", name = "skype_UNIQUE"), @UniqueConstraint(columnNames = "phone",
-        name = "phone_UNIQUE")})
+@Table(name = "teacher")
 public class Teacher extends BaseEntity implements Serializable {
 
 
@@ -44,6 +40,9 @@ public class Teacher extends BaseEntity implements Serializable {
     @NotEmpty
     protected String descr;
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teachers")
+    protected List<Subject> subjects;
+
     public Teacher() {
     }
 
@@ -65,36 +64,32 @@ public class Teacher extends BaseEntity implements Serializable {
         return email;
     }
 
-    public Teacher setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public Teacher setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getPhone() {
         return phone;
     }
 
-    public Teacher setPhone(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
-        return this;
     }
 
     public String getPhoto() {
         return photo;
     }
 
-    public Teacher setPhoto(String photo) {
-        this.photo = photo;
-        return this;
+    public void setPhoto(String photo) {
+        this.photo = photo;;
     }
 
     public String getDescr() {
@@ -109,8 +104,7 @@ public class Teacher extends BaseEntity implements Serializable {
         return skype;
     }
 
-    public Teacher setSkype(String skype) {
+    public void setSkype(String skype) {
         this.skype = skype;
-        return this;
     }
 }

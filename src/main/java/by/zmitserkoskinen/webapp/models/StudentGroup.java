@@ -14,7 +14,8 @@ public class StudentGroup extends BaseEntity implements Serializable{
     @Column(name = "name")
     @Length(max = 100)
     protected String name;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "studentGroup")
+
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, mappedBy = "studentGroup")
     protected List<Student> students;
 
     public StudentGroup() {

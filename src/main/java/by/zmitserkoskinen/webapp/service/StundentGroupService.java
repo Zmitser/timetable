@@ -1,14 +1,13 @@
 package by.zmitserkoskinen.webapp.service;
 
 
-import by.zmitserkoskinen.webapp.models.Student;
 import by.zmitserkoskinen.webapp.models.StudentGroup;
 
 import java.util.List;
 
 public interface StundentGroupService {
 
-    StudentGroup save(Student student);
+    StudentGroup save(StudentGroup studentGroup);
 
     void delete(int id);
 
