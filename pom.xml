@@ -296,7 +296,10 @@
             <artifactId>fullcalendar</artifactId>
             <version>2.6.1</version>
         </dependency>
+
+
     </dependencies>
+
 
     <dependencyManagement>
         <dependencies>

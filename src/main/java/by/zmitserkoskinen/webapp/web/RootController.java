@@ -33,8 +33,17 @@ public class RootController {
         return "teacherCard";
     }
 
-    @RequestMapping(value = "timetable", method = RequestMethod.GET)
+    @RequestMapping(value = "/timetable", method = RequestMethod.GET)
     public String getTimetable(){
         return "timetable";
+    }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String getLoginPage(){
+        return "login";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String getRegisterPage(){
+        return "register";
     }
 }

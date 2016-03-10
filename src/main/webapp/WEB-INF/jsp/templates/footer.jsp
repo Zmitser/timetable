@@ -47,3 +47,4 @@
 <script src="<c:url value="/resources/js/init.js"/>"></script>
 <script src="<c:url value="/resources/js/path.min.js"/>"></script>
 
+

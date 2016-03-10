@@ -23,13 +23,14 @@
 <script>
 
     (function ($) {
+        var source = '/ajax/timetable/';
         $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: '/ajax/timetable',
+            events: source,
             eventDataTransform: function (rawEventData) {
                 return {
                     id: rawEventData.id,
@@ -39,11 +40,21 @@
                 };
             }
         });
+
+        $('.student-group').change(function () {
+            var name = $(".student-group li.active").text();
+            var newSource = '/ajax/timetable/' + name;
+            $('#calendar').fullCalendar('removeEventSource', source)
+            $('#calendar').fullCalendar('refetchEvents')
+            $('#calendar').fullCalendar('addEventSource', newSource)
+            $('#calendar').fullCalendar('refetchEvents');
+            source = newSource;
+        });
     })(jQuery);
 </script>
 <script>
-    $(document).ready(function() {
-        $.getJSON("/ajax/group", function(data){
+    $(document).ready(function () {
+        $.getJSON("/ajax/group", function (data) {
             var options = '';
             for (var i = 0; i < data.length; i++) {
                 options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
