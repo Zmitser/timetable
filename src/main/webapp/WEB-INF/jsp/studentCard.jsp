@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
                     <p class="descr"></p>
                 </div>
                 <div class="card-action">
-                    <a href="<c:url value="/students"/>">Назад к списку студентов</a>
+                    <a href="<c:url value="/students"/>"><spring:message key="app.back_students"/><spring:message key="app.email"/></a>
                 </div>
             </div>
         </div>

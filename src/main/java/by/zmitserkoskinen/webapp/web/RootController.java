@@ -10,8 +10,14 @@ public class RootController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getRoot(){
+        return "redirect:index";
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String getIndex(){
         return "index";
     }
+
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public String getStudents(){
@@ -46,4 +52,10 @@ public class RootController {
     public String getRegisterPage(){
         return "register";
     }
+
+    @RequestMapping(value = "/progress", method = RequestMethod.GET)
+    public String getProgressPage(){
+        return "progress";
+    }
+
 }

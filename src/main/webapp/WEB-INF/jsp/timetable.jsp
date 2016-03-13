@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 <div class="input-field col s12">
     <select class="student-group">
     </select>
-    <label>Выберите группу</label>
+    <label><spring:message key="app.group_select"/></label>
 </div>
 <div id='calendar'></div>
 

@@ -1,3 +1,5 @@
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -13,8 +15,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login form using Material Design - Demo by W3lessons</title>
+    <title><spring:message key="app.login_form"/></title>
     <!-- CORE CSS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
     <style type="text/css">
         html,
@@ -37,51 +41,40 @@
 </head>
 
 <body class="red">
-
-
+<c:import url="templates/header.jsp"/>
 <div id="login-page" class="row">
     <div class="col s12 z-depth-6 card-panel">
-        <form class="login-form">
+        <form class="login-form" action="<c:url value="/spring_security_check"/>" method="POST">
             <div class="row">
                 <div class="input-field col s12 center">
                     <img src="http://w3lessons.info/logo.png" alt="" class="responsive-img valign profile-image-login">
-                    <p class="center login-form-text">W3lessons - Material Design Login Form</p>
+                    <p class="center login-form-text"><spring:message key="app.login_form"/></p>
                 </div>
             </div>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-social-person-outline prefix"></i>
-                    <input class="validate" id="email" type="email">
-                    <label for="email" data-error="wrong" data-success="right" class="center-align">Email</label>
+                    <input class="validate" id="email" type="email" name='username'>
+                    <label for="email" data-error="wrong" data-success="right" class="center-align"><spring:message key="app.email"/></label>
                 </div>
             </div>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-action-lock-outline prefix"></i>
-                    <input id="password" type="password">
-                    <label for="password">Password</label>
+                    <input id="password" type="password" name='password'>
+                    <label for="password"><spring:message key="app.password"/></label>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12 m12 l12  login-text">
-                    <input type="checkbox" id="remember-me" />
-                    <label for="remember-me">Remember me</label>
-                </div>
-            </div>
-            <div class="row">
+              <div class="row">
                 <div class="input-field col s12">
-                    <a href="login.html" class="btn waves-effect waves-light col s12">Login</a>
+                    <button  type="submit" class="btn waves-effect waves-light col s12"><spring:message key="app.login"/></button>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
-                    <p class="margin medium-small"><a href="register.html">Register Now!</a></p>
-                </div>
-                <div class="input-field col s6 m6 l6">
-                    <p class="margin right-align medium-small"><a href="forgot-password.html">Forgot password?</a></p>
+                    <p class="margin medium-small"><a href="register.html"><spring:message key="app.register_now"/></a></p>
                 </div>
             </div>
-
         </form>
     </div>
 </div>
@@ -120,16 +113,12 @@
     ga('send', 'pageview');
 
 </script><script src="//load.sumome.com/" data-sumo-site-id="1cf2c3d548b156a57050bff06ee37284c67d0884b086bebd8e957ca1c34e99a1" async="async"></script>
-
-
 <footer class="page-footer">
     <div class="footer-copyright">
         <div class="container">
-            © 2015 W3lessons.info
-            <a class="grey-text text-lighten-4 right" href="http://w3lessons.info">Karthikeyan K</a>
+            © Dmitry Borysovets
         </div>
     </div>
 </footer>
 </body>
-
 </html>

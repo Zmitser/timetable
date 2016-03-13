@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -11,26 +12,17 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Наш университет является одним из участников международной программы DreamSpark
-                    Premium</h5>
-                <p class="grey-text text-lighten-4">
-
-                    DreamSpark — это программа Майкрософт по поддержке технического образования путем предоставления
-                    доступа к программному обеспечению Майкрософт для учебных, преподавательских и исследовательских
-                    целей (подробная информация на сайте).
-
-                    Цель программы — бесплатный доступ к профессиональным средствам разработки и проектирования для
-                    учащихся и преподавателей в некоммерческих целях для учебы и научно-исследовательской работы.
-
+                <h5 class="white-text"><spring:message key="app.our_university"/></h5>
+                <p class="grey-text text-lighten-4"><spring:message key="app.dream_spark"/></p>
             </div>
             <div class="col l6 s12 right">
-                <h5 class="white-text">Settings</h5>
+                <h5 class="white-text"><spring:message key="app.sitemap"/></h5>
                 <ul>
-                    <li><a class="white-text" href="<c:url value="/"/> ">Главная</a></li>
-                    <li><a class="white-text" href="<c:url value="/teachers"/>">Преподаватели</a></li>
-                    <li><a class="white-text" href="<c:url value="/students"/>">Студенты</a></li>
-                    <li><a class="white-text" href="<c:url value="/timetable"/>">Расписание</a></li>
-                    <li><a class="white-text" href="#!">Успеваемость</a></li>
+                    <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
+                    <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
+                    <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
+                    <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
+                    <li><a href="#"><spring:message key="app.progress"/></a></li>
                 </ul>
             </div>
         </div>
