@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -67,12 +68,12 @@
             </div>
               <div class="row">
                 <div class="input-field col s12">
-                    <button  type="submit" class="btn waves-effect waves-light col s12"><spring:message key="app.login"/></button>
+                    <button  type="submit" class="btn waves-effect waves-light col s12"><spring:message key="app.enter"/></button>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6 m6 l6">
-                    <p class="margin medium-small"><a href="register.html"><spring:message key="app.register_now"/></a></p>
+                    <p class="margin medium-small"><a href="<s:url value="/register"/>"><spring:message key="app.register_now"/></a></p>
                 </div>
             </div>
         </form>
@@ -80,45 +81,9 @@
 </div>
 
 
-<center>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Post Page - Responsive -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:250px"
-         data-ad-client="ca-pub-5104998679826243"
-         data-ad-slot="3470684978"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</center>
-
-
-
-<!-- ================================================
-  Scripts
-  ================================================ -->
-
 <!-- jQuery Library -->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!--materialize js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-27820211-3', 'auto');
-    ga('send', 'pageview');
-
-</script><script src="//load.sumome.com/" data-sumo-site-id="1cf2c3d548b156a57050bff06ee37284c67d0884b086bebd8e957ca1c34e99a1" async="async"></script>
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container">
-            © Dmitry Borysovets
-        </div>
-    </div>
-</footer>
 </body>
 </html>

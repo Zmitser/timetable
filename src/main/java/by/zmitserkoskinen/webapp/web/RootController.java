@@ -58,4 +58,8 @@ public class RootController {
         return "progress";
     }
 
+    @RequestMapping(value = "/success", method = RequestMethod.GET)
+    public String getSuccessPage(){
+        return "success";
+    }
 }

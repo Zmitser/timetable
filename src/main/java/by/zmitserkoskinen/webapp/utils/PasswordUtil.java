@@ -21,7 +21,6 @@ public class PasswordUtil {
         if (StringUtils.isEmpty(newPassword)){
             return null;
         }
-
         if (isEncoded(newPassword)){
             return newPassword;
         }

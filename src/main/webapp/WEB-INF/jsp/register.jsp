@@ -41,6 +41,7 @@
 <div id="login-page" class="row">
     <div class="col s12 z-depth-6 card-panel">
         <form class="login-form">
+            <input type="hidden" name="id" value="0">
             <div class="row">
                 <div class="input-field col s12 center">
                     <img src="http://w3lessons.info/logo.png" alt="" class="responsive-img valign profile-image-login">
@@ -49,49 +50,27 @@
             </div>
             <div class="row margin">
                 <div class="input-field col s12">
-                    <i class="mdi-social-person-outline prefix"></i>
-                    <input id="username" type="text" class="validate">
-                    <label for="username" class="center-align"><spring:message key="app.username"/></label>
-                </div>
-            </div>
-            <div class="row margin">
-                <div class="input-field col s12">
                     <i class="mdi-communication-email prefix"></i>
-                    <input id="email" type="email" class="validate">
+                    <input id="email" type="email" name="email" class="validate">
                     <label for="email" class="center-align"><spring:message key="app.email"/></label>
                 </div>
             </div>
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-action-lock-outline prefix"></i>
-                    <input id="password" type="password" class="validate">
+                    <input id="password" type="password" name="password" class="validate">
                     <label for="password"><spring:message key="app.password"/></label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <a href="register.html" class="btn waves-effect waves-light col s12"><spring:message key="app.register_now"/></a>
-                </div>
-                <div class="input-field col s12">
-                    <p class="margin center medium-small sign-up"><spring:message key="app.already_have"/> <a href="login.html"><spring:message key="app.login"/></a></p>
+                    <button  type="submit" class="btn waves-effect waves-light col s12"><spring:message key="app.register_now"/></button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-
-<center>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Post Page - Responsive -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:300px;height:250px"
-         data-ad-client="ca-pub-5104998679826243"
-         data-ad-slot="3470684978"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</center>
 
 <!-- ================================================
   Scripts
@@ -102,27 +81,23 @@
 <!--materialize js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 
-
-
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  var  form =  $(".login-form");
+  var ajaxUrl = 'http://localhost:8080/ajax/users';
+  form.submit(function () {
+          $.ajax({
+              type: "POST",
+              url: ajaxUrl,
+              data: form.serialize(),
+              success: function () {
+                  var url = "/success";
+                  $(location).attr('href',url);
+              }
+          });
 
-    ga('create', 'UA-27820211-3', 'auto');
-    ga('send', 'pageview');
-
-</script><script src="//load.sumome.com/" data-sumo-site-id="1cf2c3d548b156a57050bff06ee37284c67d0884b086bebd8e957ca1c34e99a1" async="async"></script>
-
-
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container">
-            © Dmitry Borysovets
-        </div>
-    </div>
-</footer>
+      return false;
+  });
+</script>
 </body>
 
 </html>

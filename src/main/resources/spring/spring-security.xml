@@ -10,14 +10,17 @@
     <http pattern="/webjars/**" security="none"/>
 
     <http>
-        <intercept-url pattern="favicon.ico" access="permitAll" />
+        <intercept-url pattern="/favicon.ico" access="permitAll" />
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/register" access="permitAll"/>
+        <intercept-url pattern="/success" access="permitAll"/>
+        <intercept-url pattern="/ajax/users" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/login" default-target-url="/index"
                     authentication-failure-url="/login?error=true"
                     login-processing-url="/spring_security_check"/>
-        <logout logout-success-url="/login"/>
+        <logout logout-success-url="/login"
+        logout-url="/j_spring_security_logout"/>
         <csrf disabled="true"/>
     </http>
 

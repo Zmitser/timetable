@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -12,31 +13,44 @@
     <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo"><spring:message key="app.brand"/></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
-            <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
-            <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
-            <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
-            <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
-            <li><a class="dropdown-button" data-activates="dropdown1">${pageContext.response.locale}<i class="material-icons right">arrow_drop_down</i></a></li>
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a onclick="show('en')">English</a></li>
-                <li class="divider"></li>
-                <li><a onclick="show('ru')">Русский</a></li>
-            </ul>
+            <form action="<c:url value="/j_spring_security_logout"/>">
+                <sec:authorize access="isAuthenticated()">
+                    <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
+                    <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
+                    <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
+                    <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
+                    <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
+                    <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
+                </sec:authorize>
+                <li><a class="dropdown-button" data-activates="dropdown">${pageContext.response.locale}<i
+                        class="material-icons right">arrow_drop_down</i></a></li>
+                <ul id='dropdown' class='dropdown-content'>
+                    <li><a onclick="show('en')">English</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="show('ru')">Русский</a></li>
+                </ul>
+
+            </form>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
-            <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
-            <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
-            <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
-            <li><a href="#"><spring:message key="app.progress"/></a></li>
-            <li><a class="dropdown-button" data-activates="dropdown2">${pageContext.response.locale}<i class="material-icons right">arrow_drop_down</i></a></li>
-            <ul id='dropdown2' class='dropdown-content'>
-                <li><a onclick="show('en')">English</a></li>
-                <li class="divider"></li>
-                <li><a onclick="show('ru')">Русский</a></li>
-            </ul>
+            <form action="<c:url value="/j_spring_security_logout"/>">
+                <sec:authorize access="isAuthenticated()">
+                    <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
+                    <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
+                    <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
+                    <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
+                    <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
+                    <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
+                </sec:authorize>
+                <li><a class="dropdown-button" data-activates="dropdown1">${pageContext.response.locale}<i
+                        class="material-icons right">arrow_drop_down</i></a></li>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a onclick="show('en')">English</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="show('ru')">Русский</a></li>
+                </ul>
+            </form>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
