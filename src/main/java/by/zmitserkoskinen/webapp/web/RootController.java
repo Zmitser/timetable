@@ -62,4 +62,8 @@ public class RootController {
     public String getSuccessPage(){
         return "success";
     }
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String getUsersPage(){
+        return "users";
+    }
 }

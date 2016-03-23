@@ -1,11 +1,9 @@
-package by.zmitserkoskinen.webapp.web;
-
+package by.zmitserkoskinen.webapp.web.admin;
 
 import by.zmitserkoskinen.webapp.models.Teacher;
 import by.zmitserkoskinen.webapp.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,27 +12,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.*;
-import java.util.List;
 
 @RestController
-@RequestMapping("/ajax/teachers")
-public class TeacherAjaxController {
+@RequestMapping("/ajax/admin/teachers")
+public class AdminTeacherAjaxController {
     @Autowired
     protected TeacherService service;
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Teacher> getAll(){
-        return service.getAll();
-    }
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Teacher get(@PathVariable("id") int id) {
-        return service.get(id);
-    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") int id) {
         service.delete(id);
     }
-
     @RequestMapping(method = RequestMethod.POST)
     public void updateOrCreate(@Valid Teacher teacher, BindingResult result, SessionStatus status) {
         status.setComplete();
@@ -44,7 +32,6 @@ public class TeacherAjaxController {
             service.update(teacher);
         }
     }
-
     @RequestMapping("/fileUpload")
     public ResponseEntity<String> fileUploaded(
             @RequestParam("file") MultipartFile uploadedFile, SessionStatus status) {
@@ -73,6 +60,4 @@ public class TeacherAjaxController {
         }
         return new ResponseEntity<>(fileName, HttpStatus.OK);
     }
-
-
 }

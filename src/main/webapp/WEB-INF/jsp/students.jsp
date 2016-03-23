@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -12,12 +13,13 @@
 </head>
 <body>
 <c:import url="templates/header.jsp"/>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <div class="row">
     <div class="col offset-s5">
         <a class="waves-effect waves-light btn-large" id="add"><spring:message key="app.students_add"/></a>
     </div>
 </div>
-
+</sec:authorize>
 <vaadin-grid id="sort" selection-mode="multi">
     <table>
         <!-- Define the columns and their mapping to data properties. -->
@@ -25,18 +27,20 @@
         <col name="name" sortable="true"/>
         <col name="studentGroup.name" sortable="true"/>
         <col/>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
         <col/>
         <col/>
-        <col/>
+        </sec:authorize>
         <thead>
         <tr>
             <th></th>
             <th><spring:message key="app.fio"/></th>
             <th><spring:message key="app.group"/></th>
             <th></th>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
             <th></th>
             <th></th>
-            <th></th>
+            </sec:authorize>
         </tr>
         </thead>
     </table>

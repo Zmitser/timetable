@@ -38,4 +38,16 @@ public class ProgressServiceImpl implements ProgressService {
     public List<Progress> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Progress> getAllByStudentId(int id) {
+        return repository.findAllByStudentId(id);
+    }
+
+    @Override
+    public List<Progress> getByStudentIdAndSubjectId(int studentId, int subjectId) {
+        return repository.findAllByStudentIdAndSubjectId(studentId, subjectId);
+    }
+
+
 }

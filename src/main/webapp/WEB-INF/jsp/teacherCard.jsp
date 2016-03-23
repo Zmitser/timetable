@@ -40,7 +40,7 @@
 </body>
 <script>
 
-    var ajaxUrl = 'http://localhost:8080/ajax/teachers/';
+    var ajaxUrl = 'http://localhost:8080/ajax/user/teachers/';
     var array = window.location.href.split('/');
     $.ajax({
         type: "GET",

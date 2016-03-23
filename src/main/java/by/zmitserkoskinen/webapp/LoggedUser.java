@@ -1,5 +1,6 @@
 package by.zmitserkoskinen.webapp;
 
+import by.zmitserkoskinen.webapp.models.Role;
 import by.zmitserkoskinen.webapp.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,16 +14,18 @@ public class LoggedUser implements UserDetails, Serializable {
 
     private String email;
     private String password;
+    private Role role;
 
 
     public LoggedUser(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
+        this.role = user.getRole();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) () -> "USER");
+        return Collections.singleton(role);
     }
 
     @Override

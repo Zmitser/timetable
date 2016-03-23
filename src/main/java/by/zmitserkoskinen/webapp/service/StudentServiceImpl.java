@@ -39,5 +39,10 @@ public class StudentServiceImpl implements StudentService {
         return repository.findAll();
     }
 
+    @Override
+    public Student getByName(String name) {
+        return repository.getOneByName(name);
+    }
+
 
 }

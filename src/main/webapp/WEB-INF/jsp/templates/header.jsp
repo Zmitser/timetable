@@ -20,7 +20,13 @@
                     <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
                     <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
                     <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <li><a href="<c:url value="/users"/>">Users</a></li>
+                    </sec:authorize>
                     <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
+                </sec:authorize>
+                <sec:authorize access="isAnonymous()">
+                    <li><a id="demo02" href="#modal-02">README</a></li>
                 </sec:authorize>
                 <li><a class="dropdown-button" data-activates="dropdown">${pageContext.response.locale}<i
                         class="material-icons right">arrow_drop_down</i></a></li>
@@ -29,7 +35,6 @@
                     <li class="divider"></li>
                     <li><a onclick="show('ru')">Русский</a></li>
                 </ul>
-
             </form>
         </ul>
 
@@ -41,6 +46,9 @@
                     <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
                     <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
                     <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <li><a href="<c:url value="/users"/>">Users</a></li>
+                    </sec:authorize>
                     <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
                 </sec:authorize>
                 <li><a class="dropdown-button" data-activates="dropdown1">${pageContext.response.locale}<i
@@ -60,3 +68,6 @@
         window.location.href = window.location.href.split('?')[0] + '?lang=' + lang;
     }
 </script>
+
+
+

@@ -39,7 +39,7 @@
 <c:import url="templates/footer.jsp"/>
 </body>
 <script>
-    var ajaxUrl = 'http://localhost:8080/ajax/students/';
+    var ajaxUrl = 'http://localhost:8080/ajax/user/students/';
     var array = window.location.href.split('/');
         $.ajax({
             type: "GET",

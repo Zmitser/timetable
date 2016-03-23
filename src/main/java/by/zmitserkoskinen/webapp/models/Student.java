@@ -12,8 +12,7 @@ import java.io.Serializable;
 @Table(name = "student")
 public class Student extends BaseEntity implements Serializable {
     @Column(name = "name", nullable = false)
-    @NotEmpty
-    @Length(max = 100)
+    @Length(max = 300)
     protected String name;
 
     @Column(name = "photo")

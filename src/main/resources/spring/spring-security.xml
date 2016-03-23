@@ -14,7 +14,8 @@
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/register" access="permitAll"/>
         <intercept-url pattern="/success" access="permitAll"/>
-        <intercept-url pattern="/ajax/users" access="permitAll"/>
+        <intercept-url pattern="/ajax/user/users" access="permitAll"/>
+        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <form-login login-page="/login" default-target-url="/index"
                     authentication-failure-url="/login?error=true"

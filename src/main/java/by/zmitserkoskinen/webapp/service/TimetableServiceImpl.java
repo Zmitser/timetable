@@ -25,7 +25,7 @@ public class TimetableServiceImpl implements TimetableService {
 
     @Override
     public Timetable get(int id) {
-        return repository.getOne(id);
+        return repository.findOne(id);
     }
 
     @Override

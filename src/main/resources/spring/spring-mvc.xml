@@ -12,7 +12,8 @@
     </bean>
     <!-- serve static resources (*.html, ...) from src/main/webapp/ -->
     <mvc:default-servlet-handler/>
-    <mvc:annotation-driven>
+
+    <mvc:annotation-driven conversion-service="conversionService">
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="objectMapper" ref="objectMapper"/>
@@ -28,6 +29,20 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+
+    <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
+        <!--<property name="formatters">-->
+            <!--<set>-->
+                <!--<bean class="by.zmitserkoskinen.webapp.utils.formatter.LocalTimeFormatter"/>-->
+                <!--<bean class="by.zmitserkoskinen.webapp.utils.formatter.LocalDateFormatter"/>-->
+            <!--</set>-->
+        <!--</property>-->
+        <property name="converters">
+            <set>
+                <bean class="by.zmitserkoskinen.webapp.utils.converter.StringToLocalDateTimeConverter"/>
+            </set>
+        </property>
+    </bean>
     <context:component-scan base-package="by.zmitserkoskinen.**.web"/>
 
 

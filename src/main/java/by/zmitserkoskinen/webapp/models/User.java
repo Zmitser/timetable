@@ -20,6 +20,9 @@ public class User  extends BaseEntity{
     @Length(min = 5)
     protected String password;
 
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    protected Role role;
 
     public String getEmail() {
         return email;
@@ -37,7 +40,13 @@ public class User  extends BaseEntity{
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public User() {
     }
@@ -49,9 +58,24 @@ public class User  extends BaseEntity{
 
     }
 
+    public User(Integer id, String email, String password, Role role) {
+        super(id);
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public User(String email, String password, Role role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
 
     }
+
+
 }

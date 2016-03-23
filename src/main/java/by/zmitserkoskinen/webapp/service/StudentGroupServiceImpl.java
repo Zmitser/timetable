@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StudentGroupServiceImpl implements StundentGroupService {
+public class StudentGroupServiceImpl implements StudentGroupService {
 
     @Autowired
     private StudentGroupRepository repository;

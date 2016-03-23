@@ -1,10 +1,10 @@
 package by.zmitserkoskinen.webapp.models;
 
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -20,14 +20,12 @@ public class Progress extends BaseEntity implements Serializable{
     @JoinColumn(name = "subject_id")
     protected Subject subject;
 
-
     @Column(name = "score", nullable = false)
-    @NotEmpty
+    @NotNull
     protected Integer score;
 
     @Column(name = "date", nullable = false)
-    @NotEmpty
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     protected LocalDate date;
 
 
@@ -39,7 +37,7 @@ public class Progress extends BaseEntity implements Serializable{
         this.date = date;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 

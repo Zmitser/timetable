@@ -1,7 +1,6 @@
 package by.zmitserkoskinen.webapp.models;
 
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,21 +13,19 @@ import java.time.LocalDateTime;
 public class Timetable extends BaseEntity implements Serializable{
 
     @Column(name = "start_time", nullable = false)
-    @NotEmpty
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     protected LocalDateTime startTime;
 
 
     @Column(name = "end_time", nullable = false)
-    @NotEmpty
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     protected LocalDateTime endTime;
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     protected StudentGroup group;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subject_id")
     protected Subject subject;
 

@@ -1,6 +1,5 @@
 var grid = grid || document.querySelector('vaadin-grid');
-var ajaxUrl = 'http://localhost:8080/ajax/user/students/';
-var ajaxAdminUrl = 'http://localhost:8080/ajax/admin/students/';
+var ajaxUrl = 'http://localhost:8080/ajax/user/users/';
 form = $('#detailsForm');
 
 function getJSON(callback) {
@@ -23,7 +22,7 @@ function getUsersJSON() {
 
 function deleteRow(id) {
     $.ajax({
-        url: ajaxAdminUrl + id,
+        url: ajaxUrl + id,
         type: "DELETE",
         success: function () {
             getUsersJSON();
@@ -46,14 +45,6 @@ function updateRow(id) {
 }
 
 
-$('#dropzone').dmUploader({
-    url: ajaxUrl + "fileUpload",
-    dataType: 'json',
-    allowedTypes: 'image/*',
-    onUploadSuccess: function (id, response) {
-        form.find("input[name='photo']").val(response)
-    }
-});
 
 function save() {
     $.ajax({

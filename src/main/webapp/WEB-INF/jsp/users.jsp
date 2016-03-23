@@ -6,54 +6,63 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <script src="<c:url value="/resources/lib/webcomponentsjs/webcomponents-lite.min.js"/>"></script>
+    <link rel="import" href="<c:url value="/resources/lib/vaadin-core-elements/vaadin-core-elements.html"/>"/>
     <c:import url="templates/head.jsp"/>
+</head>
 <body>
 <c:import url="templates/header.jsp"/>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-<div class="row">
-    <div class="col offset-s5">
-        <a class="waves-effect waves-light btn-large" id="add"><spring:message key="app.teachers_add"/></a>
+    <div class="row">
+        <div class="col offset-s5">
+            <a class="waves-effect waves-light btn-large" id="add"><spring:message key="app.students_add"/></a>
+        </div>
     </div>
-</div>
 </sec:authorize>
 <vaadin-grid id="sort" selection-mode="multi">
     <table>
         <!-- Define the columns and their mapping to data properties. -->
-        <col name="name" sortable="true"/>
-        <col name="phone" sortable="true"/>
+        <col name="id" hidden/>
+        <col name="email" sortable="true"/>
+        <col name="role" sortable="true"/>
         <col/>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
         <col/>
         <col/>
-        </sec:authorize>
         <thead>
         <tr>
-            <th><spring:message key="app.fio"/></th>
-            <th><spring:message key="app.phone"/></th>
             <th></th>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <th>Email</th>
+            <th>Role</th>
             <th></th>
             <th></th>
-            </sec:authorize>
+            <th></th>
         </tr>
         </thead>
     </table>
 </vaadin-grid>
-<!-- Modal Structure -->
 
 <div id="modal1" class="modal modal-fixed-footer">
     <form:form id="detailsForm" method="post" class="col s12">
         <div class="modal-content">
-            <h4><spring:message key="app.teachers_edit"/></h4>
+            <h4><spring:message key="app.student_edit"/></h4>
             <div class="row">
                 <input value="Имя студента" id="id" name="id" type="hidden" class="validate">
+                <input value="Имя студента" id="studentGroupId" name="studentGroupId" type="hidden" class="validate">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input value="Имя преподавателя" id="name" name="name" type="text" class="validate">
-                        <label for="name"><spring:message key="app.fio"/></label>
+                        <input value="Имя студента" id="studentGroupName" name="studentGroupName" type="text"
+                               class="validate">
+                        <label for="studentGroupName"><spring:message key="app.group"/></label>
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input value="Имя студента" id="name" name="name" type="text" class="validate">
+                        <label for="name"><spring:message key="app.fio"/></label>
+                    </div>
+                </div>
                 <div class="file-field input-field" id="dropzone">
                     <div class="btn">
                         <span><spring:message key="app.photo"/></span>
@@ -72,20 +81,20 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="skype" name="skype" value="Skype преподавателя" type="text" class="validate">
+                        <input id="skype" name="skype" value="Skype студента" type="text" class="validate">
                         <label for="skype"><spring:message key="app.skype"/></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea id="descr" name="descr"
-                                  class="materialize-textarea"><spring:message key="app.characteristic"/></textarea>
+                                  class="materialize-textarea"></textarea>
                         <label for="descr"><spring:message key="app.characteristic"/></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone" name="phone" value="Телефон преподавателя" type="text" class="validate">
+                        <input id="phone" name="phone" value="Телефон студента" type="text" class="validate">
                         <label for="phone"><spring:message key="app.phone"/></label>
                     </div>
                 </div>
@@ -98,7 +107,6 @@
 </div>
 
 <c:import url="templates/footer.jsp"/>
-<script src="<c:url value="/resources/js/dmuploader.min.js"/>"></script>
-<script src="<c:url value="/resources/js/teachersTable.js"/>"></script>
+<script src="<c:url value="/resources/js/usersTable.js"/>"></script>
 </body>
 </html>

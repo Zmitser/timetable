@@ -38,5 +38,8 @@
 <script src="<c:url value="/webjars/materializecss/0.97.5/js/materialize.min.js"/>"></script>
 <script src="<c:url value="/resources/js/init.js"/>"></script>
 <script src="<c:url value="/resources/js/path.min.js"/>"></script>
+<script src="<c:url value="/webjars/pickadate.js/3.5.6/compressed/picker.js"/>"></script>
+<script src="<c:url value="/webjars/pickadate.js/3.5.6/compressed/picker.date.js"/>"></script>
+
 
 

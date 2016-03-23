@@ -1,11 +1,10 @@
-package by.zmitserkoskinen.webapp.web;
+package by.zmitserkoskinen.webapp.web.admin;
 
 import by.zmitserkoskinen.webapp.models.Student;
 import by.zmitserkoskinen.webapp.models.StudentGroup;
 import by.zmitserkoskinen.webapp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,25 +13,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.*;
-import java.util.List;
 
 @RestController
-@RequestMapping("/ajax/students")
-public class StudentAjaxController {
+@RequestMapping("/ajax/admin/students")
+public class AdminStudentAjaxController {
 
     @Autowired
     protected StudentService service;
-
-
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Student> getAll() {
-        return service.getAll();
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Student get(@PathVariable("id") int id) {
-        return service.get(id);
-    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") int id) {
@@ -53,11 +40,10 @@ public class StudentAjaxController {
             student.setStudentGroup(new StudentGroup(id, name));
             service.update(student);
         }
-
     }
 
     @RequestMapping("/fileUpload")
-    public  ResponseEntity<String> fileUploaded(
+    public ResponseEntity<String> fileUploaded(
             @RequestParam("file") MultipartFile uploadedFile, SessionStatus status) {
         status.setComplete();
         InputStream inputStream;

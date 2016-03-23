@@ -5,7 +5,7 @@ import by.zmitserkoskinen.webapp.models.StudentGroup;
 
 import java.util.List;
 
-public interface StundentGroupService {
+public interface StudentGroupService {
 
     StudentGroup save(StudentGroup studentGroup);
 

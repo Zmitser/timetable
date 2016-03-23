@@ -14,12 +14,15 @@
     <title><spring:message key="app.title"/> </title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link href="<c:url value="/webjars/materializecss/0.97.5/css/materialize.min.css"/>" type="text/css" rel="stylesheet"
-          media="screen,projection"/>
+    <link href="<c:url value="/webjars/materializecss/0.97.5/css/materialize.min.css"/>" type="text/css" rel="stylesheet"/>
     <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet" media="screen,projection"/>
     <script src="<c:url value="/resources/lib/webcomponentsjs/webcomponents-lite.min.js"/>"></script>
     <link rel="import" href="<c:url value="/resources/lib/vaadin-core-elements/vaadin-core-elements.html"/>"/>
-    <script src="<c:url value="/webjars/chartjs/26962ce/Chart.min.js"/>"></script>
+    <script src="<c:url value="/webjars/chart.js/1.0.2/Chart.min.js"/>"></script>
+    <link rel="stylesheet" href="<c:url value="/webjars/pickadate.js/3.5.6/compressed/themes/default.css"/>">
+    <link rel="stylesheet" href="<c:url value="/webjars/pickadate.js/3.5.6/compressed/themes/default.date.css"/>">
+    <link rel="stylesheet" href="<c:url value="/resources/css/animate.min.css"/>">
+
 </head>
 
 

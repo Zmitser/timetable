@@ -16,4 +16,8 @@ public interface ProgressService {
     void update(Progress progress);
 
     List<Progress> getAll();
+
+    List<Progress> getAllByStudentId(int id);
+
+    List<Progress> getByStudentIdAndSubjectId(int studentId, int subjectId);
 }

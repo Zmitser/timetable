@@ -24,22 +24,22 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 
     @Override
     public void delete(int id) {
-
+        userRepository.delete(id);
     }
 
     @Override
     public User get(int id) {
-        return null;
+        return userRepository.findOne(id);
     }
 
     @Override
     public void update(User user) {
-
+        userRepository.save(user);;
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
