@@ -30,13 +30,13 @@
     </mvc:annotation-driven>
 
 
-    <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
-        <!--<property name="formatters">-->
-            <!--<set>-->
-                <!--<bean class="by.zmitserkoskinen.webapp.utils.formatter.LocalTimeFormatter"/>-->
-                <!--<bean class="by.zmitserkoskinen.webapp.utils.formatter.LocalDateFormatter"/>-->
-            <!--</set>-->
-        <!--</property>-->
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
+        <property name="formatters">
+            <set>
+                <bean class="by.zmitserkoskinen.webapp.utils.formatter.LocalTimeFormatter"/>
+                <bean class="by.zmitserkoskinen.webapp.utils.formatter.LocalDateFormatter"/>
+            </set>
+        </property>
         <property name="converters">
             <set>
                 <bean class="by.zmitserkoskinen.webapp.utils.converter.StringToLocalDateTimeConverter"/>

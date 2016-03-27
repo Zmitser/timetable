@@ -1,261 +1,230 @@
 <%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Dimka
-  Date: 10.03.2016
-  Time: 21:01
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><spring:message key="app.login_form"/></title>
-    <!-- CORE CSS-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link rel="stylesheet" href="<c:url value="/resources/css/animate.min.css"/>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
-    <style type="text/css">
-        * {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        body {
-            background: #16a085;
-            font-family: 'Montserrat', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .particles {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-         #login-page{
-            position: absolute;
-            left: 25%;
-            top: 50%;
-            padding: 0 100px;
-            width: 50%;
-        }
-
-
-        @media only screen and (max-width: 1000px) {
-            h1 {
-                font-size: 70px;
-            }
-        }
-
-        @media only screen and (max-width: 800px) {
-            h1 {
-                font-size: 48px;
-            }
-            h1::after {
-                height: 8px;
-            }
-        }
-
-        @media only screen and (max-width: 568px) {
-            #login-page {
-                padding:10px 20px;
-                left: 0;
-                width: 100%;
-            }
-        }
-
-        #modal-02 {
-            width: 100%;
-            text-align: center;
-
-        }
-
-        #btn-close-modal {
-            cursor: pointer;
-            color: #fff;
-        }
-
-
-    </style>
-
+    <c:import url="templates/loginHead.jsp"/>
 </head>
-
 <body>
-
 <div class="particles">
     <div id="login-page" class="row">
         <c:import url="templates/header.jsp"/>
-        <div class="col s12 z-depth-6 card-panel">
-            <form class="login-form" action="<c:url value="/spring_security_check"/>" method="POST">
-                <div class="row">
-                    <div class="input-field col s12 center">
-                        <img src="http://w3lessons.info/logo.png" alt=""
-                             class="responsive-img valign profile-image-login">
-                        <p class="center login-form-text"><spring:message key="app.login_form"/></p>
+        <section>
+            <p><spring:message key="app.registry_or_login"/></p>
+            <div class="mockup-content">
+                <p>Pea horseradish azuki bean lettuce avocado asparagus okra.</p>
+                <div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
+                    <button type="button"><spring:message key="app.login_form"/></button>
+                    <div class="morph-content">
+                        <div>
+                            <div class="content-style-form content-style-form-1">
+                                <span class="icon icon-close">Close the dialog</span>
+                                <h2><spring:message key="app.login_form"/></h2>
+                                <form class="login-form toggle-disabled"
+                                      action="<c:url value="/spring_security_check"/>" method="POST">
+                                    <p><label><spring:message key="app.email"/></label> <input class="email" type="text"
+                                                                                               name='username'
+                                                                                               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                                                                                               required="required"></p>
+                                    <p><label><spring:message key="app.password"/></label> <input class="password"
+                                                                                                  id="password"
+                                                                                                  type="password"
+                                                                                                  name='password'
+                                                                                                  data-validation="length alphanumeric"
+                                                                                                  data-validation-length="3-12"
+                                                                                                  data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)">
+                                    </p>
+
+                                    <p>
+                                        <input type="checkbox" name="_spring_security_remember_me" class="filled-in" id="remember_me"/>
+                                        <label for="remember_me">Запомнить меня</label>
+                                    </p>
+
+                                    <c:if test="${!empty SPRING_SECURITY_LAST_EXCEPTION}">
+                                        <p class="error"><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/></p>
+                                        <c:remove scope="session" var="SPRING_SECURITY_LAST_EXCEPTION"/>
+                                    </c:if>
+                                    <p>
+                                        <button type="submit" onclick="submitLoginform()"
+                                                class="btn waves-effect waves-light col s12"><spring:message
+                                                key="app.login_form"/></button>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row margin">
-                    <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        <input class="validate" id="email" type="email" name='username'>
-                        <label for="email" data-error="wrong" data-success="right" class="center-align"><spring:message
-                                key="app.email"/></label>
+                </div><!-- morph-button -->
+                <strong class="joiner">or</strong>
+                <div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
+                    <button type="button"><spring:message key="app.register_form"/></button>
+                    <div class="morph-content">
+                        <div>
+                            <div class="content-style-form content-style-form-2">
+                                <span class="icon icon-close">Close the dialog</span>
+                                <h2><spring:message key="app.register_form"/></h2>
+                                <form class="register-form toggle-disabled" method="POST">
+                                    <input type="hidden" name="id" value="0">
+                                    <p><label><spring:message key="app.email"/></label> <input class="email" type="text"
+                                                                                               name='email'
+                                                                                               pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                                                                                               required="required"></p>
+                                    <p><label><spring:message key="app.password"/> </label><input type="password"
+                                                                                                  name="password_confirmation"
+                                                                                                  class="password"
+                                                                                                  data-validation="strength"
+                                                                                                  data-validation-strength="2"/>
+                                    </p>
+                                    <p><label><spring:message key="app.repeat_password"/></label><input type="password"
+                                                                                                        name="password"
+                                                                                                        class="password"
+                                                                                                        data-validation="confirmation"/>
+                                    </p>
+                                    <p>
+                                        <button type="submit" onclick="submitRegisterForm()"
+                                                class="btn waves-effect waves-light col s12"><spring:message
+                                                key="app.register_form"/></button>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="row margin">
-                    <div class="input-field col s12">
-                        <i class="mdi-action-lock-outline prefix"></i>
-                        <input id="password" type="password" name='password'>
-                        <label for="password"><spring:message key="app.password"/></label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <button type="submit" class="btn waves-effect waves-light col s12"><spring:message
-                                key="app.enter"/></button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 m8 l8">
-                        <p class="margin medium-small"><a href="<s:url value="/register"/>"><spring:message
-                                key="app.register_now"/></a></p>
-                    </div>
-                </div>
-            </form>
-        </div>
+                </div><!-- morph-button -->
+                <p>Kohlrabi radish okra azuki bean corn fava bean mustard tigernut juccama green bean celtuce collard
+                    greens avocado quandong.</p>
+            </div><!-- /form-mockup -->
+        </section>
     </div>
 
     <div id="modal-02">
         <!--"THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID-->
         <div id="btn-close-modal" class="close-modal-02">
-            CLOSE MODAL
+            <spring:message key="app.close_modal"/>
         </div>
 
         <div class="modal-content">
             <div class="container">
                 <div class="card-panel">
-                    <div class="flow-text">
-                        <p> This is my little "pet-project" - a simple simulation of online banking.</p>
-                        <p> Technology stack: Spring Security, Spring MVC, Hibernate ORM, Hibernate Validator, Log4J,
-                            JSP,
-                            JSTL,
-                            Apache Tomcat, WebJars, DataTables plugin, Ehcache, PostgreSQL, JUnit, Hamcrest, jQuery,
-                            jQuery
-                            notification, Bootstrap.
+                    <div>
+                        <p><spring:message key="app.glad_to_see"/></p>
+                        <p><spring:message key="app.stack"/><a href="http://projects.spring.io/spring-security/">Spring
+                            Security</a>,
+                            <a href="http://docs.spring.io/autorepo/docs/spring/3.2.x/spring-framework-reference/html/mvc.html">Spring
+                                MVC</a>,
+                            <a href="http://projects.spring.io/spring-data-jpa/">Spring Data Jpa</a>,
+                            <a href="http://hibernate.org/orm/">Hibernate ORM</a>,
+                            <a href="http://hibernate.org/validator/">Hibernate Validator</a>,
+                            <a href="http://www.slf4j.org/">SLF4J</a>,
+                            <a href="http://wiki.fasterxml.com/JacksonHome">Json Jackson</a>,
+                            <a href="http://www.oracle.com/technetwork/java/javaee/jsp/index.html">JSP</a>,
+                            <a href="http://www.oracle.com/technetwork/java/index-jsp-135995.html">JSTL</a>,
+                            <a href="http://tomcat.apache.org/">Apache Tomcat</a>,
+                            <a href="http://www.webjars.org/">WebJars</a>,
+                            <a href="https://vaadin.com/elements/-/element/vaadin-grid">Vaadin Grid</a>,
+                            <a href="https://www.mysql.com/">MySQL</a>,
+                            <a href="http://jquery.com/">jQuery</a>,
+                            <a href="http://ned.im/noty/#/about">Noty</a>,
+                            <a href="http://www.formvalidator.net/index.html">jQuery Form Validator</a>,
+                            <a href="http://materializecss.com/">Materialize</a>,
+                            <a href="https://daneden.github.io/animate.css/">Animate.css.</a>
                         </p>
-                        <p>Accounts for testing</p>
-
-                        <p>1) login: admin, password: password</p>
-
-                        <p>2) login: shapka, password: legitimniy</p>
-
-                        <p> accounts: 50500000000000000320, 30300000000000000316, 20200000000000000314,
-                            10100000000000000318
-                        </p>
-
-                        <p>There are three roles in the application: user, admin and super admin.</p>
-
-                        <p> Each user can create accounts with different currencies (USD, EUR, PLN, UAH, RUB), pay money
-                            into
-                            accounts, send money to his own accounts or to another user's accounts, with automatically
-                            conversion to
-                            recipient currency.
-                        </p>
-
-                        <p> Also, a small commission is taken for each transaction. In account's menu user can see all
-                            transaction
-                            history for each account.</p>
-
-                        <p> User can send email to administration.</p>
-
-                        You can check all user's e-mails on Gmail. (login: onlinebankrecipient@gmail.com, password:
-                        onlinebankrecipient123)
-
-                        <p> Besides, user has message menu, where he can read messages, sent by administrators.</p>
-
-                        <p>
-                            Administrator can check user's profile, block/unblock him or his accounts, change user's
-                            role,
-                            see
-                            users
-                            account's history and, also, histories of all commissions.
-                        </p>
-
-                        <p>
-                            In addition, administrator can send a message personally to each user and to all users
-                            together
-
-                        </p>
-
-                        <p>
-                            Super admin role - it's just for me :) It's the same as a usual admin role, except that
-                            another
-                            administrators can't edit my profile, can't delete it and all commission accounts belong to
-                            this
-                            profile.
-                        </p>
+                        <p><spring:message key="app.testing"/></p>
+                        <p>1) login: admin@admin.ru, password: admin</p>
+                        <p>2) login: user@user.by, password: user</p>
+                        <p><spring:message key="app.description"/></p>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- jQuery Library -->
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!--materialize js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-<script src="<c:url value="/resources/js/animatedModal.min.js"/>"></script>
-<script src="<c:url value="/resources/js/jquery.particleground.min.js" />"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        function show(lang) {
-            window.location.href = window.location.href.split('?')[0] + '?lang=' + lang;
+<c:import url="templates/loginFooter.jsp"/>
+<script>
+    var loginForm = $(".login-form");
+    var registerForm = $(".register-form");
+    var ajaxUrl = 'http://localhost:8080/ajax/user/users';
+    noty({
+        text: "<spring:message key="app.welcome"/>",
+        theme: 'relax', // or 'relax'
+        type: 'information',
+        layout: 'top',
+        timeout: 2000,
+        animation: {
+            open: 'animated bounceInLeft', // Animate.css class names
+            close: 'animated bounceOutLeft', // Animate.css class names
+            easing: 'swing', // unavailable - no need
+            speed: 500 // unavailable - no need
         }
+    });
 
-        $("#demo02").animatedModal({
-            modalTarget: 'modal-02',
-            animatedIn: 'lightSpeedIn',
-            animatedOut: 'bounceOutDown',
-            color: '#3498db',
-            // Callbacks
-            beforeOpen: function () {
-                console.log("The animation was called");
-            },
-            afterOpen: function () {
-                console.log("The animation is completed");
-            },
-            beforeClose: function () {
-                console.log("The animation was called");
-            },
-            afterClose: function () {
-                console.log("The animation is completed");
+    function submitLoginform() {
+        loginForm.submit()
+    }
+
+    function submitRegisterForm() {
+        registerForm.submit();
+    }
+    $(document).ajaxError(function (event, jqXHR, options, jsExc) {
+        failNoty(event, jqXHR, options, jsExc);
+    });
+
+    registerForm.submit(function () {
+        $.ajax({
+            type: "POST",
+            url: ajaxUrl,
+            data: registerForm.serialize(),
+            success: function () {
+                successNoty("<spring:message key="app.success_registry"/>")
             }
         });
+        return false;
 
-            $('.particles').particleground({
-                dotColor: '#5cbdaa',
-                lineColor: '#5cbdaa'
-            });
-            $('#login-page').css({
-                'margin-top': -($('#login-page').height()/2)
-            })
+    });
+    var failedNote;
+    function closeNoty() {
+        if (failedNote) {
+            failedNote.close();
+            failedNote = undefined;
+        }
+    }
+    function failNoty(event, jqXHR, options, jsExc) {
+        closeNoty();
+        var errorInfo = $.parseJSON(jqXHR.responseText);
+        failedNote = noty({
+            layout: 'top',
+            text: 'Failed: ' + jqXHR.statusText + "<br>" + errorInfo.cause + "<br>" + errorInfo.detail,
+            theme: 'relax',
+            timeout: 2000,
+            type: 'error',
+            animation: {
+                open: 'animated bounceInLeft', // Animate.css class names
+                close: 'animated bounceOutLeft', // Animate.css class names
+                easing: 'swing', // unavailable - no need
+                speed: 500 // unavailable - no need
+            }
+        });
+    }
+    function successNoty(text) {
+        closeNoty();
+        noty({
+            text: text,
+            theme: 'relax', // or 'relax'
+            type: 'success',
+            layout: 'top',
+            timeout: 2000,
+            animation: {
+                open: 'animated bounceInLeft', // Animate.css class names
+                close: 'animated bounceOutLeft', // Animate.css class names
+                easing: 'swing', // unavailable - no need
+                speed: 500 // unavailable - no need
+            }
+        });
+    }
+    $.validate({
+        modules: 'location, date, security, file, html5, toggleDisabled',
+        disabledFormFilter: 'form.toggle-disabled'
     });
 </script>
 </body>

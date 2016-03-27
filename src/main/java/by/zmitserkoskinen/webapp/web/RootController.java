@@ -18,7 +18,6 @@ public class RootController {
         return "index";
     }
 
-
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public String getStudents(){
         return "students";
@@ -46,11 +45,6 @@ public class RootController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String getLoginPage(){
         return "login";
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String getRegisterPage(){
-        return "register";
     }
 
     @RequestMapping(value = "/progress", method = RequestMethod.GET)

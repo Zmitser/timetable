@@ -1,10 +1,13 @@
 package by.zmitserkoskinen.webapp;
 
+import by.zmitserkoskinen.webapp.utils.exceptions.ErrorInfo;
+import by.zmitserkoskinen.webapp.utils.exceptions.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 public class LoggerWrapper {
+
     private Logger logger;
 
     public LoggerWrapper(Logger logger) {
@@ -64,5 +67,15 @@ public class LoggerWrapper {
     public UnsupportedOperationException getUnsupportedOperationException(String msg) {
         logger.error(msg);
         return new UnsupportedOperationException(msg);
+    }
+
+    public NotFoundException getNotFoundException(String reason) {
+        logger.error(reason);
+        return new NotFoundException(reason);
+    }
+
+    public ErrorInfo getErrorInfo(CharSequence requestUrl, Exception e) {
+        logger.error("Exception at request " + requestUrl);
+        return new ErrorInfo(requestUrl, e);
     }
 }

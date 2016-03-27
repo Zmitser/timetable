@@ -95,8 +95,6 @@
                                    alt="Unsplashed background img 3"></div>
     </div>
 </div>
-
-
 <c:import url="templates/footer.jsp"/>
 </body>
 </html>

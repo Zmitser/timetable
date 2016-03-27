@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface TimetableRepository extends JpaRepository<Timetable, Integer>{
 
-    List<Timetable> findAllByGroup_Name(String groupName);
+    List<Timetable> findAllByGroupName(String groupName);
 }

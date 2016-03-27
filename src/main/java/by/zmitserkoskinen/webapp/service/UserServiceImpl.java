@@ -43,10 +43,10 @@ public class UserServiceImpl implements UserService, UserDetailsService{
     }
 
     @Override
-    public LoggedUser loadUserByUsername(String email) throws UsernameNotFoundException {
-        User u = userRepository.getByEmail(email.toLowerCase());
+    public LoggedUser loadUserByUsername(String login) throws UsernameNotFoundException {
+        User u = userRepository.getByEmail(login.toLowerCase());
         if (u == null) {
-            throw new UsernameNotFoundException("User " + email + " is not found");
+            throw new UsernameNotFoundException("User " + login + " is not found");
         }
         return new LoggedUser(u);
     }

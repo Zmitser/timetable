@@ -40,6 +40,6 @@ public class TimetableServiceImpl implements TimetableService {
 
     @Override
     public List<Timetable> getAllByGroup(String groupName) {
-        return repository.findAllByGroup_Name(groupName);
+        return repository.findAllByGroupName(groupName);
     }
 }

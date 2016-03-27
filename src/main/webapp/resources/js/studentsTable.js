@@ -114,6 +114,8 @@ HTMLImports.whenReady(function () {
         button.setAttribute("class", " deep-orange waves-effect waves-light btn");
         cell.element.appendChild(button);
     };
+
+
     grid.columns[4].renderer = function (cell) {
         cell.element.innerHTML = '';
         var button = document.createElement('a');
