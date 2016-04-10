@@ -6,37 +6,33 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<c:import url="templates/head.jsp"/>
+<c:import url="fragments/head.jsp"/>
 <body>
-<c:import url="templates/header.jsp"/>
-
-<div class="container">
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="card">
-                <div class="card-image">
-                    <img class="person-image" src="">
-                    <span class="card-title"></span>
-                </div>
-                <div class="card-content">
-                    <p class="email"></p>
-                    <p class="skype"></p>
-                    <p class="phone"></p>
-                    <p class="descr"></p>
-                </div>
-                <div class="card-action">
-                    <a href="<c:url value="/students"/>"><spring:message key="app.back_students"/><spring:message key="app.email"/></a>
-                </div>
+<c:import url="fragments/header.jsp"/>
+<div class="container ">
+    <div class="card-panel parent teal lighten-5">
+        <h4 class="truncate card-title"></h4>
+        <div class="row">
+            <img class="responsive-img hoverable left person-image" style="margin-right: 10px; border: 1px solid #333" src="">
+            <div class="flow-text">
+                <p class="email"></p>
+                <p class="skype"></p>
+                <p class="phone"></p>
+                <p class="descr"></p>
             </div>
+        </div>
+        <div class="card-action">
+            <a href="<spring:url value="/students"/>"><spring:message code="app.back_students"/></a>
         </div>
     </div>
 </div>
-<c:import url="templates/footer.jsp"/>
+<c:import url="fragments/emailSender.jsp"/>
+<c:import url="fragments/footer.jsp"/>
 </body>
 <script>
     var ajaxUrl = 'http://localhost:8080/ajax/user/students/';

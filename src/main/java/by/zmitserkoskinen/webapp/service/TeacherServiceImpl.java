@@ -39,4 +39,9 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Teacher> getAll() {
         return repository.findAll();
     }
+
+    @Override
+    public List<Teacher> getAllWithSubjects() {
+        return repository.findAllWithSubjects();
+    }
 }

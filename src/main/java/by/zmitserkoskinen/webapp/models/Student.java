@@ -6,36 +6,40 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "student")
 public class Student extends BaseEntity implements Serializable {
     @Column(name = "name", nullable = false)
-    @Length(max = 300)
+    @Length(min = 3, max = 300, message = "The name must be at least 3 and 300 characters long!")
     protected String name;
 
     @Column(name = "photo")
     protected String photo;
 
     @Email
+    @Pattern(regexp = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Invalid Email Address!")
     @NotEmpty
     @Column(name = "email", nullable = false, unique = true)
     protected String email;
 
     @NotEmpty
     @Column(name = "skype", nullable = false, unique = true)
+    @Length(min = 3, max = 50, message = "The skype login  must be at least 3 and 300 characters long!")
     protected String skype;
 
     @NotEmpty
     @Column(name = "descr", nullable = false)
+    @Length(max = 500, message = "The description must be less 500 characters !")
     protected String descr;
 
     @NotEmpty
     @Column(name = "phone", nullable = false)
     protected String phone;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     protected StudentGroup studentGroup;
 

@@ -39,7 +39,7 @@ public class AdminTeacherAjaxController {
         InputStream inputStream;
         OutputStream outputStream;
         String fileName = uploadedFile.getOriginalFilename();
-        String fullFileName = "E:/projectForMe/timetable/src/main/webapp/resources/img/teachers/" + fileName;
+        String fullFileName = "E:/projectForMe/timetable/src/main/webapp/resources/img/" + fileName;
         try {
             inputStream = uploadedFile.getInputStream();
             File newFile = new File(fullFileName);

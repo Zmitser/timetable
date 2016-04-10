@@ -12,7 +12,7 @@ import java.util.List;
 public class Subject extends BaseEntity implements Serializable{
 
     @Column(name = "name")
-    @Length(max = 100)
+    @Length(min = 3, max = 100, message = "The name must be at least 3 and 100 characters long!")
     protected String name;
 
 

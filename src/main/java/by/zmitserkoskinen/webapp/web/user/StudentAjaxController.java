@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -28,5 +29,17 @@ public class StudentAjaxController {
         return service.get(id);
     }
 
+    @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
+    public ModelAndView downloadExcel() {
+        List<Student> students = service.getAll();
+        return new ModelAndView("studentExcelView", "students", students);
+    }
+
+
+    @RequestMapping(value = "/downloadPdf", method = RequestMethod.GET)
+    public ModelAndView downloadPdf() {
+        List<Student> students = service.getAll();
+        return new ModelAndView("studentPdfView", "students", students);
+    }
 
 }

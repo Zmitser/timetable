@@ -60,4 +60,13 @@ public class RootController {
     public String getUsersPage(){
         return "users";
     }
+    @RequestMapping(value = "/email", method = RequestMethod.GET)
+    public String getMailPage(){
+        return "email";
+    }
+
+    @RequestMapping(value = "/socket", method = RequestMethod.GET)
+    public String getSocketPage(){
+        return "socket";
+    }
 }

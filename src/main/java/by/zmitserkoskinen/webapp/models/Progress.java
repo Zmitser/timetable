@@ -4,7 +4,6 @@ package by.zmitserkoskinen.webapp.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -12,19 +11,18 @@ import java.time.LocalDate;
 @Table(name = "progress")
 public class Progress extends BaseEntity implements Serializable{
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id")
     protected Student student;
 
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subject_id")
     protected Subject subject;
 
-    @Column(name = "score", nullable = false)
-    @NotNull
+    @Column(name = "score")
     protected Integer score;
 
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     protected LocalDate date;
 
@@ -41,7 +39,7 @@ public class Progress extends BaseEntity implements Serializable{
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 

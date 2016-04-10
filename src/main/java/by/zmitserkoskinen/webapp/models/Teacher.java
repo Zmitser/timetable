@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Teacher extends BaseEntity implements Serializable {
 
     @Column(name = "name", nullable = false)
     @NotEmpty
-    @Length(max = 100)
+    @Length(min = 3, max = 300, message = "The name must be at least 3 and 300 characters long!")
     protected String name;
 
     @Column(name = "photo", nullable = false)
@@ -26,6 +27,8 @@ public class Teacher extends BaseEntity implements Serializable {
     @Column(name = "email", nullable = false)
     @NotEmpty
     @Email
+    @Pattern(regexp = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Invalid Email Address!")
+
     protected String email;
 
     @Column(name = "phone", nullable = false)
@@ -34,10 +37,12 @@ public class Teacher extends BaseEntity implements Serializable {
 
     @Column(name = "skype", nullable = false)
     @NotEmpty
+    @Length(min = 3, max = 50, message = "The skype login  must be at least 3 and 300 characters long!")
     protected String skype;
 
     @Column(name = "descr", nullable = false)
     @NotEmpty
+    @Length(max = 500, message = "The description must be less 500 characters !")
     protected String descr;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "teachers")
@@ -90,6 +95,14 @@ public class Teacher extends BaseEntity implements Serializable {
 
     public void setPhoto(String photo) {
         this.photo = photo;;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     public String getDescr() {

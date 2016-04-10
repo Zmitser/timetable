@@ -3,6 +3,7 @@ package by.zmitserkoskinen.webapp.web.user;
 import by.zmitserkoskinen.webapp.models.Role;
 import by.zmitserkoskinen.webapp.models.User;
 import by.zmitserkoskinen.webapp.service.UserService;
+import by.zmitserkoskinen.webapp.utils.EmailSender;
 import by.zmitserkoskinen.webapp.utils.PasswordUtil;
 import by.zmitserkoskinen.webapp.utils.exceptions.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,9 @@ public class UserAjaxController {
 
     @RequestMapping(method = RequestMethod.POST)
     public void updateOrCreate(@Valid User user,
-                                                 BindingResult result,
-                                                 SessionStatus status,
-                                                 HttpServletRequest request) {
+                               BindingResult result,
+                               SessionStatus status,
+                               HttpServletRequest request) {
         if (result.hasErrors()) {
             throw new ValidationException(result);
         }
@@ -70,5 +71,14 @@ public class UserAjaxController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") int id) {
         service.delete(id);
+    }
+
+
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
+    public void doSendEmail(HttpServletRequest request) {
+        String subject = request.getParameter("subject");
+        String message = request.getParameter("message");
+        EmailSender sender = EmailSender.getInstance();
+        sender.sendEmail(subject, message);
     }
 }

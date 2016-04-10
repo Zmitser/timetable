@@ -13,12 +13,7 @@ function getJSON(callback) {
     xhr.send();
 }
 
-function getUsersJSON() {
-    getJSON(function (json) {
-        grid.items = json;
-        grid.refreshItems();
-    });
-}
+
 
 function deleteRow(id) {
     $.ajax({

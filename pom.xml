@@ -243,6 +243,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.37</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
         <!--Test-->
         <dependency>
             <groupId>junit</groupId>
@@ -279,6 +285,7 @@
 
 
 
+
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>materializecss</artifactId>
@@ -291,31 +298,18 @@
             <version>2.2.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>fullcalendar</artifactId>
-            <version>2.6.1</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>chart.js</artifactId>
             <version>1.0.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>pickadate.js</artifactId>
-            <version>3.5.6</version>
-        </dependency>
+
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>modernizr</artifactId>
             <version>2.8.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>animate.css</artifactId>
-            <version>3.3.0</version>
         </dependency>
 
         <dependency>
@@ -323,8 +317,78 @@
             <artifactId>noty</artifactId>
             <version>2.3.7</version>
         </dependency>
-    </dependencies>
 
+
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>animate.css</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+
+
+
+        <!--Others-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.14</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>4.2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-websocket-api</artifactId>
+            <version>7.0.54</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-websocket</artifactId>
+            <version>7.0.54</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.websocket</groupId>
+            <artifactId>javax.websocket-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>

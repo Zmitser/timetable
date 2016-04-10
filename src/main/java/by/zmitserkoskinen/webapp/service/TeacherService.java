@@ -17,4 +17,6 @@ public interface TeacherService {
 
     List<Teacher> getAll();
 
+    List<Teacher> getAllWithSubjects();
+
 }

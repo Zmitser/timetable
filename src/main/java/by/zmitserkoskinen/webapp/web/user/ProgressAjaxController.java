@@ -1,12 +1,15 @@
 package by.zmitserkoskinen.webapp.web.user;
 
 import by.zmitserkoskinen.webapp.models.Progress;
-import by.zmitserkoskinen.webapp.service.*;
+import by.zmitserkoskinen.webapp.service.ProgressService;
+import by.zmitserkoskinen.webapp.service.StudentService;
+import by.zmitserkoskinen.webapp.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -61,5 +64,20 @@ public class ProgressAjaxController {
         } else {
             service.update(progress);
         }
+
     }
+
+    @RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
+    public ModelAndView downloadExcel() {
+        List<Progress> progresses = service.getAll();
+        return new ModelAndView("progressExcelView", "progresses", progresses);
+    }
+
+
+    @RequestMapping(value = "/downloadPdf", method = RequestMethod.GET)
+    public ModelAndView downloadPdf() {
+        List<Progress> progresses = service.getAll();
+        return new ModelAndView("progressPdfView", "progresses", progresses);
+    }
+
 }

@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "user")
@@ -13,11 +14,12 @@ public class User  extends BaseEntity{
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotEmpty
+    @Pattern(regexp = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", message = "Invalid Email Address!")
     protected String email;
 
     @Column(name = "password", nullable = false)
     @NotEmpty
-    @Length(min = 5)
+    @Length(min = 3, max = 60)
     protected String password;
 
     @Column(name = "role")

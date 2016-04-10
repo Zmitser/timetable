@@ -1,6 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -11,17 +10,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="teal" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo"><spring:message key="app.brand"/></a>
+        <a id="logo-container" href="#" class="brand-logo"><spring:message code="app.brand"/></a>
         <ul class="right hide-on-med-and-down">
-            <form action="<c:url value="/j_spring_security_logout"/>">
+            <form action="<spring:url value="/j_spring_security_logout"/>">
                 <sec:authorize access="isAuthenticated()">
-                    <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
-                    <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
-                    <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
-                    <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
-                    <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
+                    <li><a href="<spring:url value="/"/>"><spring:message code="app.home"/></a></li>
+                    <li><a href="<spring:url value="/teachers"/>"><spring:message code="app.teachers"/></a></li>
+                    <li><a href="<spring:url value="/students"/>"><spring:message code="app.students"/> </a></li>
+                    <li><a href="<spring:url value="/timetable"/>"><spring:message code="app.timetable"/></a></li>
+                    <li><a href="<spring:url value="/progress"/>"><spring:message code="app.progress"/> </a></li>
+                    <li><a href="<spring:url value="/socket"/>">Chat</a></li>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <li><a href="<c:url value="/users"/>">Users</a></li>
+                        <li><a href="<spring:url value="/users"/>">Users</a></li>
                     </sec:authorize>
                     <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
                 </sec:authorize>
@@ -39,15 +39,16 @@
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <form action="<c:url value="/j_spring_security_logout"/>">
+            <form action="<spring:url value="/j_spring_security_logout"/>">
                 <sec:authorize access="isAuthenticated()">
-                    <li><a href="<c:url value="/"/>"><spring:message key="app.home"/></a></li>
-                    <li><a href="<c:url value="/teachers"/>"><spring:message key="app.teachers"/></a></li>
-                    <li><a href="<c:url value="/students"/>"><spring:message key="app.students"/> </a></li>
-                    <li><a href="<c:url value="/timetable"/>"><spring:message key="app.timetable"/></a></li>
-                    <li><a href="<c:url value="/progress"/>"><spring:message key="app.progress"/> </a></li>
+                    <li><a href="<spring:url value="/"/>"><spring:message code="app.home"/></a></li>
+                    <li><a href="<spring:url value="/teachers"/>"><spring:message code="app.teachers"/></a></li>
+                    <li><a href="<spring:url value="/students"/>"><spring:message code="app.students"/> </a></li>
+                    <li><a href="<spring:url value="/timetable"/>"><spring:message code="app.timetable"/></a></li>
+                    <li><a href="<spring:url value="/progress"/>"><spring:message code="app.progress"/> </a></li>
+                    <li><a href="<spring:url value="/socket"/>">Chat</a></li>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <li><a href="<c:url value="/users"/>">Users</a></li>
+                        <li><a href="<spring:url value="/users"/>">Users</a></li>
                     </sec:authorize>
                     <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
                 </sec:authorize>
