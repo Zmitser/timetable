@@ -160,7 +160,16 @@
         </menu>
     </div>
     <div class="chat">
-        <div class="top"></div>
+        <div class="top">
+            <div class="avatar">
+                <img width="50" height="50" src="http://cs625730.vk.me/v625730358/1126a/qEjM1AnybRA.jpg">
+            </div>
+            <div class="info">
+                <div class="name">Юния Гапонович</div>
+                <div class="count">already 1 902 messages</div>
+            </div>
+            <i class="fa fa-star"></i>
+        </div>
         <ul class="messages"></ul>
         <div class="write-form">
             <textarea placeholder="Type your message" name="e" id="texxt" rows="2"></textarea>

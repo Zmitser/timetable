@@ -45,21 +45,6 @@
         </property>
     </bean>
 
-    <!--<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">-->
-    <!--<property name="host" value="smtp.gmail.com" />-->
-    <!--<property name="port" value="587" />-->
-    <!--<property name="username" value=""/>-->
-    <!--<property name="password" value=""/>-->
-    <!--<property name="javaMailProperties">-->
-    <!--<props>-->
-    <!--<prop key="mail.transport.protocol">smtp</prop>-->
-    <!--<prop key="mail.smtp.auth">true</prop>-->
-    <!--<prop key="mail.smtp.starttls.enable">true</prop>-->
-    <!--</props>-->
-    <!--</property>-->
-    <!--</bean>-->
-
-
     <context:component-scan base-package="by.zmitserkoskinen.**.web"/>
     <!--  all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>

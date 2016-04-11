@@ -22,7 +22,6 @@
                     login-processing-url="/spring_security_check"/>
         <logout logout-success-url="/login"
         logout-url="/j_spring_security_logout"/>
-        <remember-me/>
         <csrf disabled="true"/>
     </http>
 
