@@ -8,7 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav class="teal" role="navigation">
+<nav class="teal" userRole="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo"><spring:message code="app.brand"/></a>
         <ul class="right hide-on-med-and-down">

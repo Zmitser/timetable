@@ -1,6 +1,6 @@
 package by.zmitserkoskinen.webapp;
 
-import by.zmitserkoskinen.webapp.models.Role;
+import by.zmitserkoskinen.webapp.models.UserRole;
 import by.zmitserkoskinen.webapp.models.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,18 +16,18 @@ public class LoggedUser implements UserDetails, Serializable {
 
     private String email;
     private String password;
-    private Role role;
+    private UserRole userRole;
 
 
     public LoggedUser(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
-        this.role = user.getRole();
+        this.userRole = user.getUserRole();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(role);
+        return Collections.singleton(userRole);
     }
 
     public static LoggedUser unSafeGet() {

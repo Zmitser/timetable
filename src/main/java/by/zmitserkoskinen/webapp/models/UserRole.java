@@ -3,7 +3,7 @@ package by.zmitserkoskinen.webapp.models;
 
 import org.springframework.security.core.GrantedAuthority;
 
-public enum Role implements GrantedAuthority {
+public enum UserRole implements GrantedAuthority {
     ROLE_USER,
     ROLE_ADMIN;
 

@@ -24,7 +24,7 @@ public class User  extends BaseEntity{
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    protected Role role;
+    protected UserRole userRole;
 
     public String getEmail() {
         return email;
@@ -42,12 +42,12 @@ public class User  extends BaseEntity{
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public UserRole getUserRole() {
+        return userRole;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public User() {
@@ -60,17 +60,17 @@ public class User  extends BaseEntity{
 
     }
 
-    public User(Integer id, String email, String password, Role role) {
+    public User(Integer id, String email, String password, UserRole userRole) {
         super(id);
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.userRole = userRole;
     }
 
-    public User(String email, String password, Role role) {
+    public User(String email, String password, UserRole userRole) {
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.userRole = userRole;
     }
 
     public User(String email, String password) {

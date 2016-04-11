@@ -22,7 +22,7 @@ CREATE TABLE public.users (
   id INTEGER NOT NULL DEFAULT nextval('public.users_id_seq'),
   password VARCHAR NOT NULL,
   email    VARCHAR NOT NULL,
-  role     VARCHAR NOT NULL,
+  userRole     VARCHAR NOT NULL,
   CONSTRAINT users_pk PRIMARY KEY (id)
 );
 
