@@ -25,7 +25,7 @@
         <!-- Define the columns and their mapping to data properties. -->
         <col name="id" hidden/>
         <col name="email" sortable="true"/>
-        <col name="userRole" sortable="true"/>
+        <col name="role" sortable="true"/>
         <col/>
         <col/>
         <col/>

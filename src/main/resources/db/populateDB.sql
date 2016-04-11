@@ -106,6 +106,6 @@ INSERT INTO timetables (id, start_time, end_time, group_id, subject_id) VALUES
   (22, '2016-03-11 18:00:00', '2016-03-11 19:35:00', 1, 12),
   (23, '2016-03-07 19:55:00', '2016-03-07 21:30:00', 1, 13);
 
-INSERT INTO users (id, email, password, userRole) VALUES
+INSERT INTO users (id, email, password, role) VALUES
   (7, 'admin@admin.ru', '$2a$10$2Uq9QjwEskZUFaOY1h0q5u3OubNCuLBowKMqH1L3iXRL9R5qSjUxC', 'ROLE_ADMIN'),
   (8, 'user@user.by', '$2a$10$60Zjv6nRNxcAkW/s1.OaVuu4mOClXDw8TTkDirL7acGa0841PvHiG', 'ROLE_USER');

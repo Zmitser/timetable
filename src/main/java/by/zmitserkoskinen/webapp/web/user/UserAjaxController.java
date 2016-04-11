@@ -1,6 +1,6 @@
 package by.zmitserkoskinen.webapp.web.user;
 
-import by.zmitserkoskinen.webapp.models.UserRole;
+import by.zmitserkoskinen.webapp.models.Role;
 import by.zmitserkoskinen.webapp.models.User;
 import by.zmitserkoskinen.webapp.service.UserService;
 import by.zmitserkoskinen.webapp.utils.EmailSender;
@@ -37,7 +37,7 @@ public class UserAjaxController {
         }
         status.setComplete();
         user.setPassword(PasswordUtil.encode(user.getPassword()));
-        user.setUserRole(UserRole.ROLE_USER);
+        user.setRole(Role.ROLE_USER);
         try {
             if (user.getId() == 0) {
                 service.save(user);
