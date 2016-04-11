@@ -8,8 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "timetable", uniqueConstraints = {@UniqueConstraint(columnNames = "group_id", name = "fk_timetable_group1"),
-@UniqueConstraint(columnNames = "subject_id", name = "fk_timetable_subject1")})
+@Table(name = "timetables")
 public class Timetable extends BaseEntity implements Serializable{
 
     @Column(name = "start_time", nullable = false)

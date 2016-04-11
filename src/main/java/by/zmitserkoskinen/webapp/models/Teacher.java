@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "teacher")
+@Table(name = "teachers")
 public class Teacher extends BaseEntity implements Serializable {
 
 

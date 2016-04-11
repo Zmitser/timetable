@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "subject")
+@Table(name = "subjects")
 public class Subject extends BaseEntity implements Serializable{
 
     @Column(name = "name")
@@ -17,7 +17,7 @@ public class Subject extends BaseEntity implements Serializable{
 
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinTable(name = "subject_teacher", joinColumns = {@JoinColumn(name = "subject_id", nullable = false, updatable = false)},
+    @JoinTable(name = "teacher_subject", joinColumns = {@JoinColumn(name = "subject_id", nullable = false, updatable = false)},
     inverseJoinColumns = {@JoinColumn(name = "teacher_id", nullable = false, updatable = false)})
     protected List<Teacher> teachers;
 

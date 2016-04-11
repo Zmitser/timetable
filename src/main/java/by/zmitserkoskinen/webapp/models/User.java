@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User  extends BaseEntity{
 
     @Column(name = "email", nullable = false, unique = true)

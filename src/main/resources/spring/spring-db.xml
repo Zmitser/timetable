@@ -12,15 +12,16 @@
          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-        <jdbc:script encoding="utf-8" location="classpath:db/timetable-database.sql"/>
+        <jdbc:script location="classpath:db/init_postgres.sql"/>
+        <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
     </jdbc:initialize-database>
 
     <tx:annotation-driven/>
-    <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
+    <context:property-placeholder location="classpath:db/postgresql.properties" system-properties-mode="OVERRIDE"/>
     <bean id="dataSource"
           class="org.apache.tomcat.jdbc.pool.DataSource"
           destroy-method="close"
-          p:driverClassName="com.mysql.jdbc.Driver"
+          p:driverClassName="org.postgresql.Driver"
           p:url="${database.url}"
           p:username="${database.username}"
           p:password="${database.password}"/>
@@ -33,7 +34,7 @@
         <property name="jpaPropertyMap">
             <map>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>
-                <entry key="#{T(org.hibernate.cfg.AvailableSettings).DIALECT}" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).DIALECT}" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
                 <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
                        value="${hibernate.use_sql_comments}"/>
                 <!--<entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="${hibernate.hbm2ddl.auto}"/>-->

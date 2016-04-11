@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "student_group")
+@Table(name = "student_groups")
 public class StudentGroup extends BaseEntity implements Serializable{
 
     @Column(name = "name")

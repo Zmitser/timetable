@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "student")
+@Table(name = "students")
 public class Student extends BaseEntity implements Serializable {
     @Column(name = "name", nullable = false)
     @Length(min = 3, max = 300, message = "The name must be at least 3 and 300 characters long!")
