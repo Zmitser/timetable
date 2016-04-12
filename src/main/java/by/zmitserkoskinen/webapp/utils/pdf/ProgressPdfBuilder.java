@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Dimka on 02.04.2016.
- */
+
 public class ProgressPdfBuilder extends AbstractITextPdfView {
     public static final String FONT = "fonts/Times New Roman Cyr Regular.ttf";
     @Override
