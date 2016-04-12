@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var grid = document.querySelector('vaadin-grid');
-    var ajaxUrl = 'http://localhost:8080/ajax/user/progress/';
-    var ajaxAdminUrl = 'http://localhost:8080/ajax/admin/progress/';
+    var ajaxUrl = 'ajax/user/progress/';
+    var ajaxAdminUrl = 'ajax/admin/progress/';
     var form = $('#detailsForm');
     var statistic = $('#statistic-form');
     var students = $(".students");

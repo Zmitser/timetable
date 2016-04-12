@@ -1,5 +1,5 @@
-var ajaxUrl = 'http://localhost:8080/ajax/user/students/';
-var ajaxAdminUrl = 'http://localhost:8080/ajax/admin/students/';
+var ajaxUrl = 'ajax/user/students/';
+var ajaxAdminUrl = 'ajax/admin/students/';
 var grid = grid || document.querySelector('vaadin-grid');
 form = $('#detailsForm');
 

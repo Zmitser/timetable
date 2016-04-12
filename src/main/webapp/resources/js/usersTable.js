@@ -1,5 +1,5 @@
 var grid = grid || document.querySelector('vaadin-grid');
-var ajaxUrl = 'http://localhost:8080/ajax/user/users/';
+var ajaxUrl = 'ajax/user/users/';
 form = $('#detailsForm');
 
 function getJSON(callback) {
