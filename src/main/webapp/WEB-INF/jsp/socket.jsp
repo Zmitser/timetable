@@ -14,7 +14,7 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/nicescroll/3.5.4/jquery.nicescroll.js'></script>
     <script language="javascript" type="text/javascript">
         var claerResizeScroll, conf, insertI, lol;
-        var websocket = new WebSocket("ws://localhost:8080/chatroomServerEndpont");
+        var websocket = new WebSocket("/chatroomServerEndpont");
         conf = {
             cursorcolor: "#696c75",
             cursorwidth: "4px",

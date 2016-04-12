@@ -15,7 +15,7 @@
     </a>
 </div>
 <div id="send-email-modal" class="modal modal-fixed-footer">
-    <form:form id="send-email-form" cssClass="toggle-disabled"  method="post" class="col s12">
+    <form:form id="send-email-form"   method="post" class="col s12">
         <div class="modal-content">
             <h4>Send Message</h4>
             <div class="row">
