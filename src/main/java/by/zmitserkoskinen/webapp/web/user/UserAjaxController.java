@@ -1,8 +1,11 @@
 package by.zmitserkoskinen.webapp.web.user;
 
+import by.zmitserkoskinen.webapp.models.Role;
 import by.zmitserkoskinen.webapp.models.User;
 import by.zmitserkoskinen.webapp.service.UserService;
 import by.zmitserkoskinen.webapp.utils.EmailSender;
+import by.zmitserkoskinen.webapp.utils.PasswordUtil;
+import by.zmitserkoskinen.webapp.utils.exceptions.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -30,17 +33,23 @@ public class UserAjaxController {
 
     @RequestMapping(method = RequestMethod.POST)
     public void saveRegister(@Valid User user,
-                             BindingResult result,
-                             SessionStatus status){
-        if (!result.hasErrors()) {
-            try {
-                service.save(user);
-                status.setComplete();
-            } catch (DataIntegrityViolationException ex) {
-                result.rejectValue("email", "error.user", "user with this email already present in application");
-            }
+                               BindingResult result,
+                               SessionStatus status,
+                               HttpServletRequest request) {
+        if (result.hasErrors()) {
+            throw new ValidationException(result);
+        }
+        status.setComplete();
+        user.setPassword(PasswordUtil.encode(user.getPassword()));
+        user.setRole(Role.ROLE_USER);
+        try {
+            service.save(user);
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException("User with this email already present in application");
         }
     }
+
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAll() {
         return service.getAll();
@@ -58,8 +67,6 @@ public class UserAjaxController {
         }
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
-
-
 
 
     @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)
