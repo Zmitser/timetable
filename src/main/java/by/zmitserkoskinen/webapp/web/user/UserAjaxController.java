@@ -1,18 +1,18 @@
 package by.zmitserkoskinen.webapp.web.user;
 
-import by.zmitserkoskinen.webapp.models.Role;
 import by.zmitserkoskinen.webapp.models.User;
 import by.zmitserkoskinen.webapp.service.UserService;
 import by.zmitserkoskinen.webapp.utils.EmailSender;
-import by.zmitserkoskinen.webapp.utils.PasswordUtil;
-import by.zmitserkoskinen.webapp.utils.exceptions.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,29 +27,20 @@ public class UserAjaxController {
     @Autowired
     protected UserService service;
 
+
     @RequestMapping(method = RequestMethod.POST)
-    public void updateOrCreate(@Valid User user,
-                               BindingResult result,
-                               SessionStatus status,
-                               HttpServletRequest request) {
-        if (result.hasErrors()) {
-            throw new ValidationException(result);
-        }
-        status.setComplete();
-        user.setPassword(PasswordUtil.encode(user.getPassword()));
-        user.setRole(Role.ROLE_USER);
-        try {
-            if (user.getId() == 0) {
+    public void saveRegister(@Valid User user,
+                             BindingResult result,
+                             SessionStatus status){
+        if (!result.hasErrors()) {
+            try {
                 service.save(user);
-            } else {
-                service.update(user);
+                status.setComplete();
+            } catch (DataIntegrityViolationException ex) {
+                result.rejectValue("email", "error.user", "user with this email already present in application");
             }
-        } catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityViolationException("User with this email already present in application");
         }
-
     }
-
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAll() {
         return service.getAll();
@@ -68,10 +59,7 @@ public class UserAjaxController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable("id") int id) {
-        service.delete(id);
-    }
+
 
 
     @RequestMapping(value = "/sendEmail", method = RequestMethod.POST)

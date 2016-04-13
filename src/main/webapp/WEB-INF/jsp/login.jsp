@@ -110,7 +110,7 @@
                                     </p>
                                     <p>
                                         <button type="submit"
-                                                class="btn waves-effect waves-light col s12"><spring:message
+                                                class="btn waves-effect waves-light col s12" id="submit_button_id"><spring:message
                                                 code="app.register_form"/></button>
                                     </p>
                                 </form:form>
@@ -149,7 +149,7 @@
                             <a href="http://tomcat.apache.org/">Apache Tomcat</a>,
                             <a href="http://www.webjars.org/">WebJars</a>,
                             <a href="https://vaadin.com/elements/-/element/vaadin-grid">Vaadin Grid</a>,
-                            <a href="https://www.mysql.com/">MySQL</a>,
+                            <a href="http://www.postgresql.org/">PostgreSQL</a>,
                             <a href="http://jquery.com/">jQuery</a>,
                             <a href="http://ned.im/noty/#/about">Noty</a>,
                             <a href="http://www.formvalidator.net/index.html">jQuery Form Validator</a>,
@@ -167,24 +167,6 @@
     </div>
 </div>
 <c:import url="fragments/loginFooter.jsp"/>
-<script type="text/javascript">
-    var reformalOptions = {
-        project_id: 973416,
-        project_host: "mytimetable.reformal.ru",
-        tab_orientation: "left",
-        tab_indent: "50%",
-        tab_bg_color: "#F05A00",
-        tab_border_color: "#FFFFFF",
-        tab_image_url: "http://tab.reformal.ru/T9GC0LfRi9Cy0Ysg0Lgg0L%252FRgNC10LTQu9C%252B0LbQtdC90LjRjw==/FFFFFF/2a94cfe6511106e7a48d0af3904e3090/left/1/tab.png",
-        tab_border_width: 2
-    };
-
-    (function() {
-        var script = document.createElement('script');
-        script.type = 'text/javascript'; script.async = true;
-        script.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'media.reformal.ru/widgets/v3/reformal.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
-    })();
-</script><noscript><a href="http://reformal.ru"><img src="http://media.reformal.ru/reformal.png" /></a><a href="http://mytimetable.reformal.ru">Oтзывы и предложения для Отзывы и предложения</a></noscript>
+<c:import url="fragments/reformal.jsp"/>
 </body>
 </html>

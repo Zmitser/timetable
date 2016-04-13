@@ -12,7 +12,7 @@
     $(document).ready(function () {
         var loginForm = $(".login-form");
         var registerForm = $(".register-form");
-        var ajaxUrl = 'http://localhost:8080/ajax/user/users';
+        var ajaxUrl = '/ajax/user/users';
         noty({
             text: "<spring:message code="app.welcome"/>",
             theme: 'relax', // or 'relax'

@@ -23,7 +23,7 @@
 		support = { transitions : Modernizr.csstransitions };
 
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}
@@ -44,7 +44,7 @@
 		onAfterOpen : function() { return false; },
 		onBeforeClose : function() { return false; },
 		onAfterClose : function() { return false; }
-	}
+	};
 
 	UIMorphingButton.prototype._init = function() {
 		// the button
@@ -55,20 +55,32 @@
 		this.contentEl = this.el.querySelector( '.morph-content' );
 		// init events
 		this._initEvents();
-	}
+	};
 
 	UIMorphingButton.prototype._initEvents = function() {
 		var self = this;
-		// open
-		this.button.addEventListener( 'click', function() { self.toggle(); } );
-		// close
-		if( this.options.closeEl !== '' ) {
-			var closeEl = this.el.querySelector( this.options.closeEl );
-			if( closeEl ) {
-				closeEl.addEventListener( 'click', function() { self.toggle(); } );
+		this.button.addEventListener('click', function() {
+			self.toggle();
+		});
+		if (this.options.closeEl !== '') {
+			var closeEl = this.el.querySelector(this.options.closeEl);
+			if (closeEl) {
+				closeEl.addEventListener('click', function() {
+					self.toggle();
+				});
 			}
 		}
-	}
+		var sbId = this.el.querySelector('#submit_button_id');
+		if (sbId) {
+			sbId.addEventListener( 'click', function() {
+				setTimeout(function() {
+					self.toggle();
+				}, 2000);
+			} );
+		}
+	};
+
+
 
 	UIMorphingButton.prototype.toggle = function() {
 		if( this.isAnimating ) return false;
@@ -98,7 +110,7 @@
 					this.removeEventListener( transEndEventName, onEndTransitionFn );
 				}
 				self.isAnimating = false;
-				
+
 				// callback
 				if( self.expanded ) {
 					// remove class active (after closing)
@@ -118,33 +130,33 @@
 		else {
 			onEndTransitionFn();
 		}
-			
+
 		// set the left and top values of the contentEl (same like the button)
 		var buttonPos = this.button.getBoundingClientRect();
 		// need to reset
 		classie.addClass( this.contentEl, 'no-transition' );
 		this.contentEl.style.left = 'auto';
 		this.contentEl.style.top = 'auto';
-		
+
 		// add/remove class "open" to the button wraper
-		setTimeout( function() { 
+		setTimeout( function() {
 			self.contentEl.style.left = buttonPos.left + 'px';
 			self.contentEl.style.top = buttonPos.top + 'px';
-			
+
 			if( self.expanded ) {
 				classie.removeClass( self.contentEl, 'no-transition' );
 				classie.removeClass( self.el, 'open' );
 			}
 			else {
-				setTimeout( function() { 
+				setTimeout( function() {
 					classie.removeClass( self.contentEl, 'no-transition' );
-					classie.addClass( self.el, 'open' ); 
+					classie.addClass( self.el, 'open' );
 				}, 25 );
 			}
 		}, 25 );
-	}
+	};
 
-	// add to global namespace
 	window.UIMorphingButton = UIMorphingButton;
 
 })( window );
+
