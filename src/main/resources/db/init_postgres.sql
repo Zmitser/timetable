@@ -26,6 +26,8 @@ CREATE TABLE public.users (
   CONSTRAINT users_pk PRIMARY KEY (id)
 );
 
+CREATE UNIQUE INDEX users_unique_email_idx ON users (email);
+
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 CREATE SEQUENCE public.subjects_id_seq;
 CREATE TABLE public.subjects (
@@ -74,7 +76,7 @@ CREATE TABLE public.teachers (
   photo      VARCHAR NOT NULL,
   CONSTRAINT teachers_pk PRIMARY KEY (id)
 );
-
+CREATE UNIQUE INDEX teachers_unique_email_idx ON users (email);
 
 ALTER SEQUENCE public.teachers_id_seq OWNED BY public.teachers.id;
 
@@ -103,7 +105,7 @@ CREATE TABLE public.students (
   group_id   INTEGER NOT NULL,
   CONSTRAINT students_pk PRIMARY KEY (id)
 );
-
+CREATE UNIQUE INDEX students_unique_email_idx ON users (email);
 
 ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
 

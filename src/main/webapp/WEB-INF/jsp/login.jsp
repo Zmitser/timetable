@@ -70,7 +70,7 @@
                             <div class="content-style-form content-style-form-2">
                                 <span class="icon icon-close">Close the dialog</span>
                                 <h2><spring:message code="app.register_form"/></h2>
-                                <form:form class="register-form toggle-disabled" method="POST">
+                                <form:form class="register-form" method="POST">
                                     <input type="hidden" name="id" value="0">
                                     <p>
                                         <label><spring:message code="app.email"/>

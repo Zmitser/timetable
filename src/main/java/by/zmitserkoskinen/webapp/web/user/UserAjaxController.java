@@ -12,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,9 +27,8 @@ public class UserAjaxController {
     @Autowired
     protected UserService service;
 
-
     @RequestMapping(method = RequestMethod.POST)
-    public void saveRegister(@Valid User user,
+    public void updateOrCreate(@Valid User user,
                                BindingResult result,
                                SessionStatus status,
                                HttpServletRequest request) {
@@ -43,11 +39,15 @@ public class UserAjaxController {
         user.setPassword(PasswordUtil.encode(user.getPassword()));
         user.setRole(Role.ROLE_USER);
         try {
-            service.save(user);
-
+            if (user.getId() == 0) {
+                service.save(user);
+            } else {
+                service.update(user);
+            }
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityViolationException("User with this email already present in application");
         }
+
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -66,6 +66,11 @@ public class UserAjaxController {
             return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
         }
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") int id) {
+        service.delete(id);
     }
 
 
