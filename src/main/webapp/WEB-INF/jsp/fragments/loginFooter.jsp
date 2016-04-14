@@ -83,7 +83,7 @@
         }
         $.validate({
             modules: 'location, date, security, file, html5, toggleDisabled',
-            disabledFormFilter: 'form.login-form, form.register-form'
+            disabledFormFilter: 'form.register-form'
         });
     })
 </script>
