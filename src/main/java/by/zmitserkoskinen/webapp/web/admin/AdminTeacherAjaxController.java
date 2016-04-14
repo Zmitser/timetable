@@ -2,6 +2,8 @@ package by.zmitserkoskinen.webapp.web.admin;
 
 import by.zmitserkoskinen.webapp.models.Teacher;
 import by.zmitserkoskinen.webapp.service.TeacherService;
+import by.zmitserkoskinen.webapp.utils.exceptions.ImageUploadException;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/ajax/admin/teachers")
@@ -23,6 +26,7 @@ public class AdminTeacherAjaxController {
     public void delete(@PathVariable("id") int id) {
         service.delete(id);
     }
+
     @RequestMapping(method = RequestMethod.POST)
     public void updateOrCreate(@Valid Teacher teacher, BindingResult result, SessionStatus status) {
         status.setComplete();
@@ -32,32 +36,36 @@ public class AdminTeacherAjaxController {
             service.update(teacher);
         }
     }
+
     @RequestMapping("/fileUpload")
     public ResponseEntity<String> fileUploaded(
-            @RequestParam("file") MultipartFile uploadedFile, SessionStatus status) {
+            @RequestParam(value = "file", required = false) MultipartFile uploadedFile, SessionStatus status) {
         status.setComplete();
-        InputStream inputStream;
-        OutputStream outputStream;
         String fileName = uploadedFile.getOriginalFilename();
-        String fullFileName = "E:/projectForMe/timetable/src/main/webapp/resources/img/" + fileName;
         try {
-            inputStream = uploadedFile.getInputStream();
-            File newFile = new File(fullFileName);
-            if (!newFile.exists()) {
-                newFile.createNewFile();
+            if (!uploadedFile.isEmpty()) {
+                validateImage(uploadedFile);
+                saveImage(uploadedFile);
             }
-            outputStream = new FileOutputStream(newFile);
-            int read;
-            byte[] bytes = new byte[1024];
-
-            while ((read = inputStream.read(bytes)) != -1) {
-                outputStream.write(bytes, 0, read);
-            }
-            inputStream.close();
-            outputStream.close();
-        } catch (IOException e) {
+        } catch (ImageUploadException e) {
             return new ResponseEntity<>(fileName, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(fileName, HttpStatus.OK);
+    }
+
+    private void saveImage(MultipartFile uploadedFile) throws ImageUploadException {
+        try {
+            File file = new File("src/main/webapp/resources/img/" + uploadedFile.getOriginalFilename());
+            FileUtils.writeByteArrayToFile(file, uploadedFile.getBytes());
+        } catch (IOException e){
+            throw new ImageUploadException("Unable to save image", e);
+        }
+
+    }
+
+    private void validateImage(MultipartFile uploadedFile) {
+        if (!uploadedFile.getContentType().equals("image/jpeg") && uploadedFile.getContentType().equals("image/png")) {
+            throw new ImageUploadException("Only images accepted");
+        }
     }
 }

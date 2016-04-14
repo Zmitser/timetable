@@ -37,8 +37,7 @@
 <c:import url="fragments/footer.jsp"/>
 </body>
 <script>
-
-    var ajaxUrl = 'http://localhost:8080/ajax/user/teachers/';
+    var ajaxUrl = 'ajax/user/teachers/';
     var array = window.location.href.split('/');
     $.ajax({
         type: "GET",
