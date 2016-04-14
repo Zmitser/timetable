@@ -22,7 +22,7 @@
                             <div class="content-style-form content-style-form-1">
                                 <span class="icon icon-close">Close the dialog</span>
                                 <h2><spring:message code="app.login_form"/></h2>
-                                <form class="login-form toggle-disabled"
+                                <form class="login-form"
                                       action="<c:url value="/spring_security_check"/>" method="POST">
                                     <p><label><spring:message code="app.email"/></label> <input class="email"
                                                                                                 type="text"
@@ -70,7 +70,7 @@
                             <div class="content-style-form content-style-form-2">
                                 <span class="icon icon-close">Close the dialog</span>
                                 <h2><spring:message code="app.register_form"/></h2>
-                                <form:form class="register-form" method="POST">
+                                <form:form class="register-form toogle-disabled" method="POST">
                                     <input type="hidden" name="id" value="0">
                                     <p>
                                         <label><spring:message code="app.email"/>
