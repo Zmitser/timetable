@@ -25,7 +25,7 @@
 
             </div>
         </div>
-        <div class="parallax"><img class="bg" src="<spring:url value="/resources/img/background1.jpg"/>"
+        <div class="parallax"><img class="bg" src="<c:url value="/resources/img/background1.jpg"/>"
                                    alt="Unsplashed background img 1"></div>
     </div>
     <div class="container">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img class="bg" src="<spring:url value="/resources/img/background2.jpg"/>"
+        <div class="parallax"><img class="bg" src="<c:url value="/resources/img/background2.jpg"/>"
                                    alt="Unsplashed background img 2"></div>
     </div>
     <div class="container">
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img class="bg" src="<spring:url value="/resources/img/background3.jpg"/>"
+        <div class="parallax"><img class="bg" src="<c:url value="/resources/img/background3.jpg"/>"
                                    alt="Unsplashed background img 3"></div>
     </div>
 </div>
