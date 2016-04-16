@@ -19,9 +19,9 @@
                     <li><a href="<spring:url value="/students"/>"><spring:message code="app.students"/> </a></li>
                     <li><a href="<spring:url value="/timetable"/>"><spring:message code="app.timetable"/></a></li>
                     <li><a href="<spring:url value="/progress"/>"><spring:message code="app.progress"/> </a></li>
-                    <li><a href="<spring:url value="/socket"/>">Chat</a></li>
+                    <li><a href="<spring:url value="/socket"/>"><spring:message code="app.chat"/></a></li>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <li><a href="<spring:url value="/users"/>">Users</a></li>
+                        <li><a href="<spring:url value="/users"/>"><spring:message code="app.users"/></a></li>
                     </sec:authorize>
                     <button type="submit" class="waves-effect waves-teal btn-flat">Logout</button>
                 </sec:authorize>
