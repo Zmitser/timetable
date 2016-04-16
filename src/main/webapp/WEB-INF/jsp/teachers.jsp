@@ -45,7 +45,7 @@
 <!-- Modal Structure -->
 
 <div id="modal1" class="modal modal-fixed-footer">
-    <form:form id="detailsForm" method="post" class="col s12">
+    <form id="detailsForm" method="post" class="col s12">
         <div class="modal-content">
             <h4><spring:message code="app.teachers_edit"/></h4>
             <div class="row">
@@ -145,7 +145,27 @@
         <div class="modal-footer">
             <button type="submit" class="waves-effect waves-light btn"><spring:message code="app.save"/></button>
         </div>
-    </form:form>
+    </form>
+</div>
+
+<div id="modal2" class="modal" style="max-width: 900px; max-height: 100%">
+    <div class="modal-content">
+        <h4 class="truncate card-title"></h4>
+        <div class="row">
+            <img class="responsive-img hoverable left person-image"
+                 style="margin-right: 10px; border: 1px solid #333; max-width: 300px; max-height: 300px"
+                 src="">
+            <div class="flow-text">
+                <p class="email"></p>
+                <p class="skype"></p>
+                <p class="phone"></p>
+                <p class="descr"></p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
 </div>
 
 <c:import url="fragments/emailSender.jsp"/>
@@ -158,6 +178,22 @@
     $.validate({
         modules: 'location, date, security, file, html5, toggleDisabled',
         disabledFormFilter: 'form.toggle-disabled'
+    });
+    $(document).on("click", ".info", function (event) {
+        var id = this.name;
+        $.ajax({
+            url: ajaxUrl + id,
+            type: "GET",
+            success: function (data) {
+                $('.card-title').text(data.name);
+                $('.email').text(data.email);
+                $('.skype').text(data.skype);
+                $('.phone').text(data.phone);
+                $('.descr').text(data.descr);
+                $('.person-image').attr("src", "<c:url value="/resources/img/"/>" + data.photo);
+                $("#modal2").openModal();
+            }
+        })
     });
 </script>
 <c:import url="fragments/reformal.jsp"/>

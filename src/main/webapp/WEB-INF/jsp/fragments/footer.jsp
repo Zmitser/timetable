@@ -1,12 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Dimka
-  Date: 05.03.2016
-  Time: 14:38
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <footer class="page-footer teal">
     <div class="container">
@@ -29,12 +22,11 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Dmitry Borysovets</a>
+            Made by <a class="brown-text text-lighten-3">Dmitry Borysovets</a>
         </div>
     </div>
 </footer>
 <!--  Scripts-->
-
 <script src="<c:url value="/resources/lib/jquery-form-validator/form-validator/jquery.form-validator.min.js"/>"></script>
 <script src="<c:url value="/resources/lib/moment/min/moment-with-locales.min.js"/>"></script>
 <script src="<c:url value="/webjars/materializecss/0.97.5/js/materialize.min.js"/>"></script>

@@ -13,8 +13,6 @@ function getJSON(callback) {
     xhr.send();
 }
 
-
-
 function deleteRow(id) {
     $.ajax({
         url: ajaxUrl + id,
@@ -24,7 +22,6 @@ function deleteRow(id) {
         }
     })
 }
-
 function updateRow(id) {
     $.getJSON(ajaxUrl + id, function (data) {
         $.each(data, function (key, val) {
@@ -38,8 +35,6 @@ function updateRow(id) {
         $('#modal1').openModal();
     });
 }
-
-
 
 function save() {
     $.ajax({
@@ -95,20 +90,12 @@ HTMLImports.whenReady(function () {
     grid.columns[3].renderer = function (cell) {
         cell.element.innerHTML = '';
         var button = document.createElement('a');
-        button.setAttribute('href', '/student/' + grid.items[cell.row.index]['id']);
-        button.innerHTML = "Подробнее";
-        button.setAttribute("class", " deep-orange waves-effect waves-light btn");
-        cell.element.appendChild(button);
-    };
-    grid.columns[4].renderer = function (cell) {
-        cell.element.innerHTML = '';
-        var button = document.createElement('a');
         button.setAttribute('onclick', 'updateRow("' + grid.items[cell.row.index]['id'] + '");');
         button.innerHTML = "Изменить";
         button.setAttribute("class", "blue waves-effect waves-light btn");
         cell.element.appendChild(button);
     };
-    grid.columns[5].renderer = function (cell) {
+    grid.columns[4].renderer = function (cell) {
         cell.element.innerHTML = '';
         var button = document.createElement('a');
         button.setAttribute('onclick', 'deleteRow("' + grid.items[cell.row.index]['id'] + '");');

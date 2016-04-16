@@ -23,14 +23,7 @@ $('#add').click(function () {
     $('#studentGroupId').val(0);
     $('#modal1').openModal();
 });
-grid.columns[3].renderer = function (cell) {
-    cell.element.innerHTML = '';
-    var button = document.createElement('a');
-    button.setAttribute('href', '/student/' + grid.items[cell.row.index]['id']);
-    button.innerHTML = "Подробнее";
-    button.setAttribute("class", " deep-orange waves-effect waves-light btn");
-    cell.element.appendChild(button);
-};
+
 
 
 

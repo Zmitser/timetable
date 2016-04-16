@@ -26,6 +26,10 @@ function deleteRow(id) {
 }
 
 
+
+
+
+
 $(document).on("click", ".delete", function (event) {
     var id = this.name;
     deleteRow(id);
@@ -93,6 +97,16 @@ HTMLImports.whenReady(function () {
             return res;
         });
     });
+
+    grid.columns[3].renderer = function (cell) {
+        cell.element.innerHTML = '';
+        var button = document.createElement('a');
+        button.innerHTML = "Подробнее";
+        button.setAttribute("class", "orange waves-effect waves-light btn info");
+        button.setAttribute("name", grid.items[cell.row.index]['id']);
+        cell.element.appendChild(button);
+    };
+
     grid.columns[4].renderer = function (cell) {
         cell.element.innerHTML = '';
         var button = document.createElement('a');

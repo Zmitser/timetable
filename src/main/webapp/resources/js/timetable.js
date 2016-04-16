@@ -111,7 +111,7 @@ $(document).ready(function () {
     });
     $('.date').bootstrapMaterialDatePicker({
         format: 'YYYY-MM-DD\\THH:mm',
-        lang: navigator.browserLanguage || navigator.language || navigator.userLanguage
+        lang: 'ru'
     });
     $.validate({
         modules: 'location, date, security, file, html5, toggleDisabled',

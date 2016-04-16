@@ -105,13 +105,14 @@
                                                class="password tooltipped"
                                                data-position="top"
                                                data-delay="50"
-                                               data-tooltip="just repeat paassword:)"
+                                               data-tooltip="just repeat password:)"
                                                data-validation="confirmation"/>
                                     </p>
                                     <p>
                                         <button type="submit"
-                                                class="btn waves-effect waves-light col s12" id="submit_button_id"><spring:message
-                                                code="app.register_form"/></button>
+                                                class="btn waves-effect waves-light col s12" id="submit_button_id">
+                                            <spring:message
+                                                    code="app.register_form"/></button>
                                     </p>
                                 </form:form>
                             </div>
