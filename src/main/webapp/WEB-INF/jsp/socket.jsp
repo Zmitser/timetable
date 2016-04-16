@@ -67,13 +67,6 @@
         </form>
         <menu class="list-friends">
             <li>
-                <img width="50" height="50" src="http://cs625730.vk.me/v625730358/1126a/qEjM1AnybRA.jpg">
-                <div class="info">
-                    <div class="user">Юния Гапонович</div>
-                    <div class="status on"> online</div>
-                </div>
-            </li>
-            <li>
                 <img width="50" height="50" src="http://lorempixel.com/50/50/people/1">
                 <div class="info">
                     <div class="user">Name Fam</div>
@@ -161,14 +154,6 @@
     </div>
     <div class="chat">
         <div class="top">
-            <div class="avatar">
-                <img width="50" height="50" src="http://cs625730.vk.me/v625730358/1126a/qEjM1AnybRA.jpg">
-            </div>
-            <div class="info">
-                <div class="name">Юния Гапонович</div>
-                <div class="count">already 1 902 messages</div>
-            </div>
-            <i class="fa fa-star"></i>
         </div>
         <ul class="messages"></ul>
         <div class="write-form">

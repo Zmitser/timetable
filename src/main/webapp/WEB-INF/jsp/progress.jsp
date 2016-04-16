@@ -55,7 +55,7 @@
     <canvas id="buyers"></canvas>
 </div>
 <div class="col s6 m6 l6">
-    <vaadin-grid id="sort" selection-mode="multi">
+    <vaadin-grid id="sort">
         <table>
             <!-- Define the columns and their mapping to data properties. -->
             <col name="id" hidden/>

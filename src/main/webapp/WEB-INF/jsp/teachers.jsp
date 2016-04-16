@@ -18,7 +18,7 @@
             Pdf список Преподавателей</a>
     </div>
 </sec:authorize>
-<vaadin-grid id="sort" selection-mode="multi">
+<vaadin-grid id="sort">
     <table>
         <!-- Define the columns and their mapping to data properties. -->
         <col name="id" hidden/>
