@@ -12,6 +12,6 @@ public interface ProgressRepository  extends JpaRepository<Progress, Integer>{
 
     List<Progress> findAllByStudentId(int id);
 
-    List<Progress> findAllByStudentIdAndSubjectId(int id, int subjectId);
+    List<Progress> findAllByStudentIdAndSubjectIdOrderByDateAsc(int id, int subjectId);
 
 }

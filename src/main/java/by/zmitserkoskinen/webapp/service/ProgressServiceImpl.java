@@ -46,7 +46,7 @@ public class ProgressServiceImpl implements ProgressService {
 
     @Override
     public List<Progress> getByStudentIdAndSubjectId(int studentId, int subjectId) {
-        return repository.findAllByStudentIdAndSubjectId(studentId, subjectId);
+        return repository.findAllByStudentIdAndSubjectIdOrderByDateAsc(studentId, subjectId);
     }
 
 
