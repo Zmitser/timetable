@@ -51,7 +51,7 @@
             <div class="row">
                 <input value="Имя студента" id="id" name="id" type="hidden" class="validate">
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input value="Имя преподавателя"
                                id="name"
                                name="name"
@@ -64,26 +64,7 @@
                                maxlength="300">
                         <label for="name"><spring:message code="app.fio"/></label>
                     </div>
-                </div>
-
-                <div class="file-field input-field" id="dropzone">
-                    <div class="btn">
-                        <span><spring:message code="app.photo"/></span>
-                        <input type="file"
-                               data-validation="mime"
-                               data-validation-allowing="jpg, png, gif"
-                               class="validate tooltipped"
-                               data-position="top"
-                               data-delay="50"
-                               data-tooltip="only jpg, png, gif">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" name="photo" type="text">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s16">
                         <input class="email tooltipped"
                                data-position="top"
                                data-delay="50"
@@ -97,7 +78,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input id="skype"
                                name="skype"
                                value="Skype преподавателя"
@@ -109,6 +90,33 @@
                                data-valiation="length"
                                data-validation-length="3-50">
                         <label for="skype"><spring:message code="app.skype"/></label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="phone"
+                               name="phone"
+                               value="Телефон преподавателя"
+                               type="text"
+                               class="validate tooltipped"
+                               data-position="top"
+                               data-delay="50"
+                               data-tooltip="Blah-blah-blah!"
+                               required="required">
+                        <label for="phone"><spring:message code="app.phone"/></label>
+                    </div>
+                </div>
+                <div class="file-field input-field" id="dropzone">
+                    <div class="btn">
+                        <span><spring:message code="app.photo"/></span>
+                        <input type="file"
+                               data-validation="mime"
+                               data-validation-allowing="jpg, png, gif"
+                               class="validate tooltipped"
+                               data-position="top"
+                               data-delay="50"
+                               data-tooltip="only jpg, png, gif">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" name="photo" type="text">
                     </div>
                 </div>
                 <div class="row">
@@ -126,20 +134,6 @@
                         <label for="descr"><spring:message code="app.characteristic"/></label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="phone"
-                               name="phone"
-                               value="Телефон преподавателя"
-                               type="text"
-                               class="validate tooltipped"
-                               data-position="top"
-                               data-delay="50"
-                               data-tooltip="Blah-blah-blah!"
-                               required="required">
-                        <label for="phone"><spring:message code="app.phone"/></label>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -147,7 +141,6 @@
         </div>
     </form>
 </div>
-
 <div id="modal2" class="modal" style="max-width: 900px; max-height: 100%">
     <div class="modal-content">
         <h4 class="truncate card-title"></h4>

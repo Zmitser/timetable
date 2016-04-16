@@ -20,7 +20,7 @@
         </div>
     </div>
 </sec:authorize>
-<vaadin-grid id="sort">
+<vaadin-grid id="sort" selection-mode="multi">
     <table>
         <!-- Define the columns and their mapping to data properties. -->
         <col name="id" hidden/>
@@ -42,7 +42,7 @@
     </table>
 </vaadin-grid>
 
-<div id="modal1" class="modal modal-fixed-footer">
+<div id="modal1" class="modal">
     <form id="detailsForm" method="post" class="col s12">
         <div class="modal-content">
             <h4><spring:message code="app.student_edit"/></h4>

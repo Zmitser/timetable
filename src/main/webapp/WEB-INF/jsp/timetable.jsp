@@ -28,7 +28,7 @@
 </div>
 <div id='calendar'></div>
 
-<div id="modal1" class="modal modal-fixed-footer">
+<div id="modal1" class="modal" style="max-height: 100%">
     <form:form id="detailsForm" method="post" class="col s12">
         <div class="modal-content">
             <h4><spring:message code="app.student_edit"/></h4>

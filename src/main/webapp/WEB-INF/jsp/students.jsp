@@ -29,7 +29,7 @@
     </div>
 
 </sec:authorize>
-<vaadin-grid id="sort">
+<vaadin-grid id="sort" selection-mode="multi">
     <table>
         <!-- Define the columns and their mapping to data properties. -->
         <col name="id" hidden/>
@@ -63,7 +63,7 @@
                 <input value="Имя студента" id="id" name="id" type="hidden" class="validate">
                 <input value="Имя студента" id="studentGroupId" name="studentGroupId" type="hidden" class="validate">
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input value="Имя студента"
                                id="studentGroupName"
                                name="studentGroupName"
@@ -77,10 +77,7 @@
                                data-tooltip="пример: 551001">
                         <label for="studentGroupName"><spring:message code="app.group"/></label>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input value="Имя студента"
                                id="name"
                                name="name"
@@ -94,24 +91,39 @@
                         <label for="name"><spring:message code="app.fio"/></label>
                     </div>
                 </div>
-                <div class="file-field input-field" id="dropzone">
-                    <div class="btn">
-                        <span><spring:message code="app.photo"/></span>
-                        <input type="file"
-                               data-validation="mime"
-                               data-validation-allowing="jpg,png,gif"
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="phone"
+                               name="phone"
+                               value="Телефон студента"
+                               type="text"
                                class="validate tooltipped"
                                data-position="top"
                                data-delay="50"
-                               data-tooltip="only jpg, png, gif">
+                               data-tooltip="Blah-blah-blah!"
+                               required="required">
+                        <label for="phone"><spring:message code="app.phone"/></label>
                     </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" name="photo" type="text">
+                    <div class="col s6">
+                        <div class="file-field input-field" id="dropzone">
+                            <div class="btn">
+                                <span><spring:message code="app.photo"/></span>
+                                <input type="file"
+                                       data-validation="mime"
+                                       data-validation-allowing="jpg,png,gif"
+                                       class="validate tooltipped"
+                                       data-position="top"
+                                       data-delay="50"
+                                       data-tooltip="only jpg, png, gif">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" name="photo" type="text">
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input class="email tooltipped"
                                data-position="top"
                                data-delay="50"
@@ -123,9 +135,7 @@
                                required="required">
                         <label for="email"><spring:message code="app.email"/></label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <input id="skype"
                                name="skype"
                                value="Skype студента"
@@ -152,20 +162,6 @@
                         <label for="descr"><spring:message code="app.characteristic"/></label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="phone"
-                               name="phone"
-                               value="Телефон студента"
-                               type="text"
-                               class="validate tooltipped"
-                               data-position="top"
-                               data-delay="50"
-                               data-tooltip="Blah-blah-blah!"
-                               required="required">
-                        <label for="phone"><spring:message code="app.phone"/></label>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -176,18 +172,18 @@
 
 <div id="modal2" class="modal" style="max-width: 900px; max-height: 100%">
     <div class="modal-content">
-            <h4 class="truncate card-title"></h4>
-            <div class="row">
-                <img class="responsive-img hoverable left person-image"
-                     style="margin-right: 10px; border: 1px solid #333; max-width: 300px; max-height: 300px"
-                     src="">
-                <div class="flow-text">
-                    <p class="email"></p>
-                    <p class="skype"></p>
-                    <p class="phone"></p>
-                    <p class="descr"></p>
-                </div>
+        <h4 class="truncate card-title"></h4>
+        <div class="row">
+            <img class="responsive-img hoverable left person-image"
+                 style="margin-right: 10px; border: 1px solid #333; max-width: 300px; max-height: 300px"
+                 src="">
+            <div class="flow-text">
+                <p class="email"></p>
+                <p class="skype"></p>
+                <p class="phone"></p>
+                <p class="descr"></p>
             </div>
+        </div>
         <div class="modal-footer">
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
