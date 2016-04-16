@@ -25,20 +25,6 @@
             <label>Выберите интересующую группу</label>
         </div>
     </div>
-
-    <div class="col s4 m4 l4">
-        <div class="input-field col s12">
-            <select class="subjects" name="subject">
-            </select>
-            <label>Выберите интересующий предмет</label>
-        </div>
-    </div>
-
-    <div class="col s4 m4 l4">
-        <div class="input-field col s12">
-            <button type="button" id="find-progress" class="waves-effect waves-light btn">Найти</button>
-        </div>
-    </div>
 </div>
 <div id='calendar'></div>
 

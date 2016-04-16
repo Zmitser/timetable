@@ -49,6 +49,10 @@ public class UserAjaxController {
         }
 
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public User get(@PathVariable("id") int id) {
+        return service.get(id);
+    }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAll() {
