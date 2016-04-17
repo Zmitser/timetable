@@ -31,7 +31,6 @@
 <script src="<c:url value="/resources/lib/moment/min/moment-with-locales.min.js"/>"></script>
 <script src="<c:url value="/webjars/materializecss/0.97.5/js/materialize.min.js"/>"></script>
 <script src="<c:url value="/resources/js/init.js"/>"></script>
-<script src="<c:url value="/resources/js/path.min.js"/>"></script>
 <script src="<c:url value="/webjars/noty/2.3.7/js/noty/packaged/jquery.noty.packaged.min.js"/>"></script>
 <script src="<c:url value="/resources/js/emailSend.js"/>"></script>
 
