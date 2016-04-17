@@ -9,7 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="teal" role="navigation">
-    <div class="nav-wrapper container">
+    <div class="nav-wrapper">
         <a id="logo-container" href="#" class="brand-logo"><spring:message code="app.brand"/></a>
         <ul class="right hide-on-med-and-down">
             <form action="<spring:url value="/j_spring_security_logout"/>">

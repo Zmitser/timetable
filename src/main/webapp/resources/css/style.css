@@ -16,7 +16,9 @@ nav ul a {
 footer {
     margin-top: 20px;
 }
-
+.parallax-container{
+    width: 100%;
+}
 p {
     line-height: 2rem;
 }
