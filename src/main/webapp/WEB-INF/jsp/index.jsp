@@ -18,13 +18,7 @@
             <div class="row center">
                 <h5 class="header col s12 light"><spring:message code="app.new_age"/></h5>
             </div>
-            <div class="row center">
-                <a href="http://materializecss.com/getting-started.html" id="download-button"
-                   class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
-            </div>
-            <br><br>
-
-        </div>
+            <br><br></div>
     </div>
     <div class="parallax"><img src="<c:url value="/resources/img/background1.jpg"/>" alt="Unsplashed background img 1">
     </div>
@@ -45,7 +39,6 @@
                 <div class="icon-block">
                     <h2 class="center brown-text"><i class="material-icons">group</i></h2>
                     <h5 class="center"><spring:message code="app.useful"/></h5>
-
                     <p class="light"><spring:message code="app.benefit"/></p>
                 </div>
             </div>

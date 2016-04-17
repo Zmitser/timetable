@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title><spring:message code="app.title"/></title>
 <link rel="stylesheet" href="<c:url value="/resources/css/normalize.css"/>">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <link href="<c:url value="/webjars/materializecss/0.97.5/css/materialize.min.css"/>" type="text/css"
       rel="stylesheet"/>
 <script src="<c:url value="/webjars/jquery/2.2.1/jquery.min.js"/> "></script>

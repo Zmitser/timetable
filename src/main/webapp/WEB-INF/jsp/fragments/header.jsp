@@ -9,10 +9,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="teal" role="navigation">
-    <div class="nav-wrapper">
+    <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo"><spring:message code="app.brand"/></a>
         <ul class="right hide-on-med-and-down">
             <form action="<spring:url value="/j_spring_security_logout"/>">
+                <li style="width: 50px"><a class="dropdown-button" data-activates="dropdown">${pageContext.response.locale}</a></li>
+                <ul id='dropdown' class='dropdown-content'>
+                    <li><a onclick="show('en')">English</a></li>
+                    <li class="divider"></li>
+                    <li><a onclick="show('ru')">Русский</a></li>
+                </ul>
                 <sec:authorize access="isAuthenticated()">
                     <li><a href="<spring:url value="/"/>"><spring:message code="app.home"/></a></li>
                     <li><a href="<spring:url value="/teachers"/>"><spring:message code="app.teachers"/></a></li>
@@ -28,13 +34,6 @@
                 <sec:authorize access="isAnonymous()">
                     <li><a id="demo02" href="#modal-02">README</a></li>
                 </sec:authorize>
-                <li><a class="dropdown-button" data-activates="dropdown">${pageContext.response.locale}<i
-                        class="material-icons right">arrow_drop_down</i></a></li>
-                <ul id='dropdown' class='dropdown-content'>
-                    <li><a onclick="show('en')">English</a></li>
-                    <li class="divider"></li>
-                    <li><a onclick="show('ru')">Русский</a></li>
-                </ul>
             </form>
         </ul>
 
